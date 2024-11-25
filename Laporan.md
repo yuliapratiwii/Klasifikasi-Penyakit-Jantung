@@ -238,7 +238,7 @@ Deep Learning menggunakan Neural Network dengan beberapa lapisan untuk menangkap
 | Deep Learning        | 0.814815 | 0.785714  | 0.868421 | 0.825000 |
 
 ## Analisis Confusion Matrix
-![confusion matrik]()
+![confusion matrik](https://github.com/user-attachments/assets/b6014b97-64dd-4378-964a-4fcc9f4f5207)
 ### 1. Logistic Regression
 - **True Positives (TP)**: 154 (Prediksi Diabetes benar)
 - **False Positives (FP)**: 71 (Prediksi Diabetes, tetapi sebenarnya No Diabetes)
