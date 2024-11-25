@@ -238,7 +238,7 @@ Deep Learning menggunakan Neural Network dengan beberapa lapisan untuk menangkap
 | Deep Learning        | 0.814815 | 0.785714  | 0.868421 | 0.825000 |
 
 ## Analisis Confusion Matrix
-
+![download (1)](https://github.com/user-attachments/assets/e583b32c-f5af-414e-99f5-dc0e4736ac7c)
 
 ## 1. Logistic Regression:
 - **True Positives (TP)**: 154 (Heart Disease yang diprediksi dengan benar sebagai Heart Disease).
