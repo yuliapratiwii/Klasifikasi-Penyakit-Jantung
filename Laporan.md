@@ -125,7 +125,7 @@ Pada tahap ini, dilakukan beberapa proses untuk mempersiapkan data agar siap dig
 ---
 ## Modeling
 
-Pada tahap ini, dilakukan pemodelan data menggunakan berbagai algoritma machine learning untuk memprediksi diabetes. Model yang digunakan meliputi Logistic Regression, Random Forest, Support Vector Machine (SVM), dan Deep Learning. Setiap model dievaluasi berdasarkan metrik akurasi, precision, recall, dan F1-score.
+Pada tahap ini, dilakukan pemodelan data menggunakan berbagai algoritma machine learning untuk memprediksi penyakit jantung. Model yang digunakan meliputi Logistic Regression, Random Forest, Support Vector Machine (SVM), dan Deep Learning. Setiap model dievaluasi berdasarkan metrik akurasi, precision, recall, dan F1-score.
 
 ---
 
@@ -238,50 +238,45 @@ Deep Learning menggunakan Neural Network dengan beberapa lapisan untuk menangkap
 | Deep Learning        | 0.814815 | 0.785714  | 0.868421 | 0.825000 |
 
 ## Analisis Confusion Matrix
-![confusion matrik](https://github.com/user-attachments/assets/b6014b97-64dd-4378-964a-4fcc9f4f5207)
-### 1. Logistic Regression
-- **True Positives (TP)**: 154 (Prediksi Diabetes benar)
-- **False Positives (FP)**: 71 (Prediksi Diabetes, tetapi sebenarnya No Diabetes)
-- **True Negatives (TN)**: 117 (Prediksi No Diabetes benar)
-- **False Negatives (FN)**: 36 (Prediksi No Diabetes, tetapi sebenarnya Diabetes)
 
-**Analisis**: 
-Logistic Regression cenderung memiliki jumlah **False Positives** yang lebih tinggi, yang berarti lebih banyak orang yang diprediksi memiliki diabetes padahal sebenarnya tidak. Hal ini menyebabkan **Recall** yang lebih tinggi tetapi **Precision** yang lebih rendah.
 
-### 2. Random Forest
-- **True Positives (TP)**: 182 (Prediksi Diabetes benar)
-- **False Positives (FP)**: 5 (Prediksi Diabetes, tetapi sebenarnya No Diabetes)
-- **True Negatives (TN)**: 183 (Prediksi No Diabetes benar)
-- **False Negatives (FN)**: 8 (Prediksi No Diabetes, tetapi sebenarnya Diabetes)
+## 1. Logistic Regression:
+- **True Positives (TP)**: 154 (Heart Disease yang diprediksi dengan benar sebagai Heart Disease).
+- **True Negatives (TN)**: 117 (No Heart Disease yang diprediksi dengan benar sebagai No Heart Disease).
+- **False Positives (FP)**: 71 (No Heart Disease yang diprediksi sebagai Heart Disease).
+- **False Negatives (FN)**: 36 (Heart Disease yang diprediksi sebagai No Heart Disease).
 
-**Analisis**: 
-Random Forest menunjukkan performa terbaik dengan sedikitnya **False Positives** dan **False Negatives**, memberikan **Precision** dan **Recall** yang sangat baik. Model ini sangat efektif dalam mengidentifikasi pasien yang benar-benar memiliki diabetes.
+Model ini memiliki cukup banyak **False Positives** dan **False Negatives**, yang menunjukkan bahwa model ini kurang optimal dalam membedakan kelas *Heart Disease* dan *No Heart Disease*.
 
-### 3. Support Vector Machine (SVM)
-- **True Positives (TP)**: 170 (Prediksi Diabetes benar)
-- **False Positives (FP)**: 31 (Prediksi Diabetes, tetapi sebenarnya No Diabetes)
-- **True Negatives (TN)**: 157 (Prediksi No Diabetes benar)
-- **False Negatives (FN)**: 20 (Prediksi No Diabetes, tetapi sebenarnya Diabetes)
+## 2. Random Forest:
+- **True Positives (TP)**: 182 (Heart Disease yang diprediksi dengan benar sebagai Heart Disease).
+- **True Negatives (TN)**: 183 (No Heart Disease yang diprediksi dengan benar sebagai No Heart Disease).
+- **False Positives (FP)**: 5 (No Heart Disease yang diprediksi sebagai Heart Disease).
+- **False Negatives (FN)**: 8 (Heart Disease yang diprediksi sebagai No Heart Disease).
 
-**Analisis**: 
-SVM memiliki **False Positives** yang lebih tinggi dibandingkan Random Forest, namun masih lebih baik daripada Logistic Regression. Model ini menunjukkan performa yang baik, dengan **Recall** yang cukup tinggi, tetapi memiliki sedikit **False Positives** yang dapat meningkatkan **Precision**.
+Model **Random Forest** menunjukkan hasil yang sangat baik dengan sedikit kesalahan (**FP** dan **FN** sangat rendah). Ini menunjukkan bahwa model ini sangat baik dalam klasifikasi kedua kelas, dengan tingkat akurasi yang tinggi.
 
-### 4. Deep Learning
-- **True Positives (TP)**: 165 (Prediksi Diabetes benar)
-- **False Positives (FP)**: 45 (Prediksi Diabetes, tetapi sebenarnya No Diabetes)
-- **True Negatives (TN)**: 143 (Prediksi No Diabetes benar)
-- **False Negatives (FN)**: 25 (Prediksi No Diabetes, tetapi sebenarnya Diabetes)
+## 3. Support Vector Machine (SVM):
+- **True Positives (TP)**: 170 (Heart Disease yang diprediksi dengan benar sebagai Heart Disease).
+- **True Negatives (TN)**: 157 (No Heart Disease yang diprediksi dengan benar sebagai No Heart Disease).
+- **False Positives (FP)**: 31 (No Heart Disease yang diprediksi sebagai Heart Disease).
+- **False Negatives (FN)**: 20 (Heart Disease yang diprediksi sebagai No Heart Disease).
 
-**Analisis**: 
-Deep Learning memiliki **False Positives** yang cukup tinggi, tetapi **Recall** yang baik. Model ini menunjukkan potensi dalam menangkap lebih banyak kasus Diabetes (Recall tinggi), meskipun ada sedikit kesalahan dalam memprediksi Non-Diabetes sebagai Diabetes.
+Model **SVM** memiliki performa yang baik, tetapi masih ada beberapa kesalahan klasifikasi (**FP** dan **FN**). Meskipun demikian, model ini cukup seimbang dalam memprediksi kedua kelas.
 
-## Kesimpulan Umum:
-- **Random Forest** adalah model yang paling seimbang, dengan **False Positives** dan **False Negatives** yang rendah, yang menunjukkan performa yang optimal dalam memprediksi kedua kelas (Diabetes dan No Diabetes).
-- **SVM** juga menunjukkan performa yang baik meskipun sedikit lebih banyak menghasilkan **False Positives** daripada Random Forest.
-- **Deep Learning** menunjukkan keunggulan dalam **Recall**, tetapi memiliki **False Positives** yang tinggi, yang berarti sering salah mengklasifikasikan orang yang sehat sebagai pengidap diabetes.
-- **Logistic Regression** menunjukkan performa terburuk, dengan **False Positives** dan **False Negatives** yang lebih tinggi.
+## 4. Deep Learning:
+- **True Positives (TP)**: 165 (Heart Disease yang diprediksi dengan benar sebagai Heart Disease).
+- **True Negatives (TN)**: 143 (No Heart Disease yang diprediksi dengan benar sebagai No Heart Disease).
+- **False Positives (FP)**: 45 (No Heart Disease yang diprediksi sebagai Heart Disease).
+- **False Negatives (FN)**: 25 (Heart Disease yang diprediksi sebagai No Heart Disease).
 
-Jika tujuan Anda adalah untuk mengidentifikasi sebanyak mungkin orang yang benar-benar mengidap diabetes (lebih fokus pada **Recall**), model Deep Learning atau SVM mungkin lebih cocok. Namun, jika Anda lebih mementingkan akurasi dan menghindari kesalahan prediksi (baik **False Positives** maupun **False Negatives**), Random Forest adalah pilihan yang paling tepat.
+Model **Deep Learning** menunjukkan hasil yang baik meskipun masih ada beberapa **False Positives** dan **False Negatives**. Model ini menunjukkan kemampuan yang baik dalam memprediksi penyakit jantung, tetapi masih ada ruang untuk perbaikan dalam klasifikasi.
 
+## Kesimpulan:
+- **Random Forest** menunjukkan performa terbaik dengan sedikit kesalahan dalam klasifikasi (**FP** dan **FN** rendah).
+- **Logistic Regression** menunjukkan kinerja yang lebih buruk, dengan lebih banyak kesalahan dalam klasifikasi.
+- **SVM** dan **Deep Learning** memiliki hasil yang lebih seimbang, dengan **SVM** sedikit lebih baik daripada **Deep Learning** dalam hal jumlah kesalahan.
+
+Penting untuk mencatat bahwa metrik-metrik lain seperti **Precision**, **Recall**, dan **F1-Score** dapat memberikan gambaran lebih lengkap tentang performa masing-masing model dalam klasifikasi.
 
 
