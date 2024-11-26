@@ -1,10 +1,10 @@
 # Laporan Proyek Machine Learning - Yulia Pratiwi
 ## Domain Proyek
-Penyakit jantung merupakan salah satu penyebab utama kematian di seluruh dunia, dengan jutaan kasus baru dilaporkan setiap tahun. Deteksi dini dan penanganan yang tepat menjadi langkah krusial untuk menurunkan angka kematian akibat penyakit ini. Namun, proses diagnosa tradisional sering kali membutuhkan waktu yang lama, biaya yang besar, serta ketergantungan pada keahlian medis yang terbatas di beberapa daerah.
+Penyakit jantung merupakan salah satu penyebab utama kematian di seluruh dunia, dengan jutaan kasus baru dilaporkan setiap tahun. Menurut Shi et al. (2016), epidemiologi penyakit jantung menunjukkan bahwa prevalensi penyakit ini terus meningkat secara global, terutama di negara berkembang. Deteksi dini dan penanganan yang tepat menjadi langkah krusial untuk menurunkan angka kematian akibat penyakit ini. Namun, proses diagnosa tradisional sering kali membutuhkan waktu yang lama, biaya yang besar, serta ketergantungan pada keahlian medis yang terbatas di beberapa daerah.
 
-Di era digital ini, data medis pasien seperti usia, tekanan darah, kadar kolesterol, dan faktor risiko lainnya dapat dimanfaatkan secara optimal melalui teknologi kecerdasan buatan (AI) dan machine learning. Teknologi ini memungkinkan pembuatan model prediktif yang dapat membantu tenaga medis menganalisis risiko penyakit jantung secara lebih cepat, akurat, dan efisien.
+Di era digital ini, data medis pasien seperti usia, tekanan darah, kadar kolesterol, dan faktor risiko lainnya dapat dimanfaatkan secara optimal melalui teknologi kecerdasan buatan (AI) dan machine learning. Teknologi ini memungkinkan pembuatan model prediktif yang dapat membantu tenaga medis menganalisis risiko penyakit jantung secara lebih cepat, akurat, dan efisien. Sebagai contoh, pendekatan berbasis jaringan saraf tiruan telah digunakan oleh Rani (2011) untuk menganalisis dataset penyakit jantung dengan hasil yang cukup menjanjikan.
 
-Proyek ini bertujuan untuk mengembangkan model machine learning berbasis klasifikasi guna memprediksi risiko penyakit jantung. Dengan memanfaatkan dataset medis yang berisi berbagai parameter seperti usia, jenis kelamin, tekanan darah, kolesterol, dan hasil tes lainnya, model ini dapat membantu dalam pengambilan keputusan klinis. Diharapkan solusi ini tidak hanya meningkatkan akurasi prediksi, tetapi juga berkontribusi dalam mempercepat diagnosa serta mendukung upaya pencegahan penyakit jantung secara lebih luas.
+Proyek ini bertujuan untuk mengembangkan model machine learning berbasis klasifikasi guna memprediksi risiko penyakit jantung. Dengan memanfaatkan dataset medis yang berisi berbagai parameter seperti usia, jenis kelamin, tekanan darah, kolesterol, dan hasil tes lainnya, model ini dapat membantu dalam pengambilan keputusan klinis. Berdasarkan penelitian Chaki et al. (2015), beberapa metode klasifikasi telah dibandingkan, menunjukkan potensi penggunaan algoritma pembelajaran mesin untuk meningkatkan akurasi diagnosa. Diharapkan solusi ini tidak hanya meningkatkan akurasi prediksi, tetapi juga berkontribusi dalam mempercepat diagnosa serta mendukung upaya pencegahan penyakit jantung secara lebih luas.
 
 ### Referensi
 - Shi, A., Tao, Z., Wei, P., & Zhao, J. (2016). Epidemiological aspects of heart diseases. Experimental and therapeutic medicine, 12(3), 1645-1650.
@@ -114,11 +114,7 @@ Pada tahap ini, dilakukan beberapa proses untuk mempersiapkan data agar siap dig
 - **Proses**: Data numerik dinormalisasi menggunakan teknik Min-Max Scaling atau Standard Scaling agar setiap fitur memiliki skala yang sama.
 - **Alasan**: Normalisasi diperlukan untuk mencegah bias pada fitur tertentu yang memiliki skala lebih besar dibandingkan fitur lainnya.
 
-### 5. Mengonversi Data Kategorikal menjadi Variabel Dummy
-- **Proses**: Data kategorikal diubah menjadi variabel dummy menggunakan fungsi `pd.get_dummies` dengan opsi `drop_first=True`.
-- **Alasan**: Model machine learning memerlukan data dalam format numerik, sehingga data kategorikal perlu dikonversi ke format ini.
-
-### 6. Membagi Dataset menjadi Data Latih dan Uji
+### 5. Membagi Dataset menjadi Data Latih dan Uji
 - **Proses**: Data dibagi menjadi data latih (80%) dan data uji (20%) menggunakan fungsi `train_test_split`.
 - **Alasan**: Pembagian ini diperlukan untuk mengevaluasi performa model secara objektif pada data yang belum pernah dilihat model sebelumnya.
 
@@ -228,7 +224,7 @@ Deep Learning menggunakan Neural Network dengan beberapa lapisan untuk menangkap
 
 ---
 
-### Tabel Hasil Evaluasi
+### 5.Perbandingan Hasil Model
 
 | Model               | Akurasi  | Precision | Recall   | F1 Score |
 |---------------------|----------|-----------|----------|----------|
@@ -237,10 +233,31 @@ Deep Learning menggunakan Neural Network dengan beberapa lapisan untuk menangkap
 | Support Vector Machine (SVM) | 0.865079 | 0.845771  | 0.894737 | 0.869565 |
 | Deep Learning        | 0.814815 | 0.785714  | 0.868421 | 0.825000 |
 
-## Analisis Confusion Matrix
+### 6. Model Terbaik
+Dari hasil evaluasi, model Random Forest memiliki performa terbaik berdasarkan keseimbangan antara akurasi, precision, recall, dan F1-score. Model ini dipilih sebagai model akhir karena performanya yang unggul dan kemampuannya menangani dataset yang kompleks.
+
+## Evaluation
+Pada tahap ini, dilakukan evaluasi terhadap performa model berdasarkan berbagai metrik, yaitu Akurasi, Precision, Recall, dan F1 Score. Selain itu, analisis confusion matrix digunakan untuk memahami prediksi yang benar dan salah dari model.
+
+### Metrik Evaluasi
+Akurasi: Mengukur proporsi prediksi yang benar dari total prediksi.
+Precision: Mengukur ketepatan prediksi kelas positif dari semua prediksi positif.
+Recall: Mengukur sensitivitas model dalam mendeteksi kelas positif.
+F1 Score: Rata-rata harmonis antara precision dan recall.
+
+### Hasil Evaluasi
+| Model               | Akurasi  | Precision | Recall    | F1 Score  |
+|---------------------|----------|-----------|-----------|-----------|
+| Logistic Regression | 0.716931 | 0.684444  | 0.810526  | 0.742169  |
+| Random Forest       | 0.965608 | 0.973262  | 0.957895  | 0.965517  |
+| SVM                 | 0.865079 | 0.845771  | 0.894737  | 0.869565  |
+| Deep Learning       | 0.814815 | 0.785714  | 0.868421  | 0.825000  |
+
+### Analisis Confusion Matrix
+Confusion matrix memberikan informasi tentang prediksi benar (True Positives dan True Negatives) serta prediksi salah (False Positives dan False Negatives). Berikut adalah confusion matrix dari masing-masing model:
 ![download (1)](https://github.com/user-attachments/assets/e583b32c-f5af-414e-99f5-dc0e4736ac7c)
 
-## 1. Logistic Regression:
+### 1. Logistic Regression:
 - **True Positives (TP)**: 154 (Heart Disease yang diprediksi dengan benar sebagai Heart Disease).
 - **True Negatives (TN)**: 117 (No Heart Disease yang diprediksi dengan benar sebagai No Heart Disease).
 - **False Positives (FP)**: 71 (No Heart Disease yang diprediksi sebagai Heart Disease).
@@ -248,7 +265,7 @@ Deep Learning menggunakan Neural Network dengan beberapa lapisan untuk menangkap
 
 Model ini memiliki cukup banyak **False Positives** dan **False Negatives**, yang menunjukkan bahwa model ini kurang optimal dalam membedakan kelas *Heart Disease* dan *No Heart Disease*.
 
-## 2. Random Forest:
+### 2. Random Forest:
 - **True Positives (TP)**: 182 (Heart Disease yang diprediksi dengan benar sebagai Heart Disease).
 - **True Negatives (TN)**: 183 (No Heart Disease yang diprediksi dengan benar sebagai No Heart Disease).
 - **False Positives (FP)**: 5 (No Heart Disease yang diprediksi sebagai Heart Disease).
@@ -256,7 +273,7 @@ Model ini memiliki cukup banyak **False Positives** dan **False Negatives**, yan
 
 Model **Random Forest** menunjukkan hasil yang sangat baik dengan sedikit kesalahan (**FP** dan **FN** sangat rendah). Ini menunjukkan bahwa model ini sangat baik dalam klasifikasi kedua kelas, dengan tingkat akurasi yang tinggi.
 
-## 3. Support Vector Machine (SVM):
+### 3. Support Vector Machine (SVM):
 - **True Positives (TP)**: 170 (Heart Disease yang diprediksi dengan benar sebagai Heart Disease).
 - **True Negatives (TN)**: 157 (No Heart Disease yang diprediksi dengan benar sebagai No Heart Disease).
 - **False Positives (FP)**: 31 (No Heart Disease yang diprediksi sebagai Heart Disease).
@@ -264,7 +281,7 @@ Model **Random Forest** menunjukkan hasil yang sangat baik dengan sedikit kesala
 
 Model **SVM** memiliki performa yang baik, tetapi masih ada beberapa kesalahan klasifikasi (**FP** dan **FN**). Meskipun demikian, model ini cukup seimbang dalam memprediksi kedua kelas.
 
-## 4. Deep Learning:
+### 4. Deep Learning:
 - **True Positives (TP)**: 165 (Heart Disease yang diprediksi dengan benar sebagai Heart Disease).
 - **True Negatives (TN)**: 143 (No Heart Disease yang diprediksi dengan benar sebagai No Heart Disease).
 - **False Positives (FP)**: 45 (No Heart Disease yang diprediksi sebagai Heart Disease).
@@ -272,11 +289,28 @@ Model **SVM** memiliki performa yang baik, tetapi masih ada beberapa kesalahan k
 
 Model **Deep Learning** menunjukkan hasil yang baik meskipun masih ada beberapa **False Positives** dan **False Negatives**. Model ini menunjukkan kemampuan yang baik dalam memprediksi penyakit jantung, tetapi masih ada ruang untuk perbaikan dalam klasifikasi.
 
-## Kesimpulan:
-- **Random Forest** menunjukkan performa terbaik dengan sedikit kesalahan dalam klasifikasi (**FP** dan **FN** rendah).
-- **Logistic Regression** menunjukkan kinerja yang lebih buruk, dengan lebih banyak kesalahan dalam klasifikasi.
-- **SVM** dan **Deep Learning** memiliki hasil yang lebih seimbang, dengan **SVM** sedikit lebih baik daripada **Deep Learning** dalam hal jumlah kesalahan.
+## Analisis Performa Model 
+### Analisis Performa Model
+1. **Logistic Regression**  
+   Model ini memiliki akurasi 71.69% dan F1 Score 74.22%. Hasil ini menunjukkan bahwa Logistic Regression kurang mampu memberikan prediksi yang andal. Akurasi rendah menunjukkan potensi risiko dalam konteks bisnis, seperti diagnosa yang tidak tepat, sehingga kurang sesuai untuk implementasi.
 
-Penting untuk mencatat bahwa metrik-metrik lain seperti **Precision**, **Recall**, dan **F1-Score** dapat memberikan gambaran lebih lengkap tentang performa masing-masing model dalam klasifikasi.
+2. **Random Forest**  
+   Model Random Forest memiliki performa terbaik dengan akurasi 96.56% dan F1 Score 96.55%. Tingkat kesalahan rendah pada prediksi menunjukkan bahwa model ini mampu mengatasi masalah akurasi rendah dalam diagnosa penyakit jantung, menjadikannya solusi yang dapat diandalkan untuk kebutuhan medis.
+
+3. **SVM**  
+   Support Vector Machine memberikan hasil yang baik dengan akurasi 86.50% dan F1 Score 86.96%. Namun, performa ini masih di bawah Random Forest, sehingga kurang optimal dalam konteks kebutuhan akurasi tinggi untuk diagnosa medis.
+
+4. **Deep Learning**  
+   Model ini memiliki akurasi 81.48% dan F1 Score 82.50%. Performa ini cukup baik, tetapi masih kalah dari Random Forest. Untuk implementasi lebih lanjut, model ini memerlukan optimasi tambahan untuk meningkatkan akurasi dan kestabilannya.
+
+---
+
+## Kesimpulan dan Rekomendasi
+1. Model **Random Forest** dipilih sebagai solusi implementasi karena memberikan akurasi dan F1 Score terbaik, sesuai dengan kebutuhan untuk diagnosa medis yang cepat dan akurat.
+2. Untuk tahap implementasi berikutnya, disarankan melakukan:
+   - **Hyperparameter tuning** untuk lebih meningkatkan akurasi dan kestabilan model.
+   - **Validasi silang (cross-validation)** untuk memastikan performa yang andal pada data yang berbeda.
+   - Eksplorasi model deep learning lebih lanjut jika tersedia dataset yang lebih besar, guna meningkatkan kemampuan generalisasi.
+3. Model ini diharapkan dapat mendukung diagnosa dini penyakit jantung dan memberikan dampak positif dalam efisiensi layanan kesehatan secara keseluruhan.
 
 
