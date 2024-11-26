@@ -128,13 +128,13 @@ Berdasarkan tabel-tabel di atas, maka pada proyek kali ini akan menggunakan sala
 ### Univariate Exploratory Data Analysis
 Selanjutnya adalah menampilkan 10 data teratas dan terbawah menurut jumlah kemunculan data pada fitur `Category` yang dapat dilihat pada Gambar 1.
 
-![top_10_category](https://github.com/hizidha/books-recommendation/blob/main/assets/10_teratas.png?raw=true)
+![top_10_category](https://github.com/user-attachments/assets/4cfd070d-80ce-4b65-8fb2-5bb74fad08d6)
 
-*Gambar 1. 10 data category teratas*
+ *10 data category teratas*
 
-![top_10_category_2](https://github.com/hizidha/books-recommendation/blob/main/assets/10_terbawah.png?raw=true)
+![top_10_category_2](https://github.com/user-attachments/assets/360f34d9-5338-4cc8-9eda-fe9e53395e6d)
 
-*Gambar 2. 10 data category terbawah*
+*10 data category terbawah*
 
 
 ## Data Preprocessing
@@ -370,43 +370,32 @@ Berikut menunjukkan buku yang telah di rating tinggi oleh user lain dan memberik
 1. Mean Squared Error (MSE)
     MSE adalah singkatan dari "Mean Squared Error" atau "Rata-rata Kesalahan Kuadrat". Ini adalah salah satu metrik evaluasi yang umum digunakan dalam statistik, ilmu data, dan machine learning untuk mengukur seberapa baik model memprediksi nilai target pada data yang diberikan. MSE mengukur rata-rata dari kuadrat perbedaan antara nilai aktual dan nilai yang diprediksi oleh model. Dengan demikian, semakin rendah nilai MSE, semakin baik model dalam memprediksi nilai target.
 
-    ![mse](https://github.com/hizidha/books-recommendation/blob/main/assets/rumus-mse.png?raw=true)
+    ![visuliasasi-mse](https://github.com/user-attachments/assets/cf93287f-41f8-4897-bdc0-ad6bf36e6b82)
 
-    *Gambar 3. Rumus metrik evaluasi `mean squared error`*
-
-    ![visuliasasi-mse](https://github.com/hizidha/books-recommendation/blob/main/assets/visuliasasi-mse.png?raw=true)
-
-    *Gambar 4. Hasil Mean Squared Error*
+    Hasil Mean Squared Error*
 
     Tren MSE pada data train dan val menurun seiring dengan waktu, namun mereka tetap berada pada tingkat yang relatif rendah. Hal ini menunjukkan bahwa model mampu mengurangi kesalahan baik pada data train maupun val, yang merupakan indikasi baik.
 
 2. Precision
     Presisi mengukur seberapa banyak dari prediksi positif yang sebenarnya benar. Ini memberikan pemahaman tentang seberapa baik model dalam menghindari memberikan hasil positif palsu. Presisi dihitung dengan membagi jumlah prediksi positif yang benar dengan total prediksi positif yang dilakukan.
 
-    ![presisi](https://github.com/hizidha/books-recommendation/blob/main/assets/presisi.png?raw=true)
 
-    *Gambar 5. Rumus metrik evaluasi `precision`*
+    ![precision](https://github.com/user-attachments/assets/a6f57fdd-985f-42dd-9e7b-7fdc2afa1da0)
 
-    ![visuliasasi-precision](https://github.com/hizidha/books-recommendation/blob/main/assets/visuliasasi-precision.png?raw=true)
+    *Hasil Precision*
 
-    *Gambar 6. Hasil Precision*
-
-    Gambar 6 menunjukkan visualisasi hasil dari metrik precision pada data train dan data validation. Dari visualisasi tersebut, terlihat bahwa precision pada data train cenderung meningkat seiring waktu, yang menunjukkan bahwa model memiliki performa yang semakin baik dalam mengidentifikasi hasil positif yang benar pada data train seiring dengan proses pelatihan. Namun, pada data validation, precision terlihat lebih fluktuatif, yang dapat disebabkan oleh berbagai faktor seperti perubahan dalam distribusi data atau kompleksitas model. Meskipun fluktuatif, secara keseluruhan, precision pada kedua data relatif tinggi, yang menunjukkan bahwa model memiliki kemampuan yang baik untuk mengidentifikasi hasil positif yang benar, terlepas dari variasi dalam data validation.
+    Gambar diatas menunjukkan visualisasi hasil dari metrik precision pada data train dan data validation. Dari visualisasi tersebut, terlihat bahwa precision pada data train cenderung meningkat seiring waktu, yang menunjukkan bahwa model memiliki performa yang semakin baik dalam mengidentifikasi hasil positif yang benar pada data train seiring dengan proses pelatihan. Namun, pada data validation, precision terlihat lebih fluktuatif, yang dapat disebabkan oleh berbagai faktor seperti perubahan dalam distribusi data atau kompleksitas model. Meskipun fluktuatif, secara keseluruhan, precision pada kedua data relatif tinggi, yang menunjukkan bahwa model memiliki kemampuan yang baik untuk mengidentifikasi hasil positif yang benar, terlepas dari variasi dalam data validation.
 
     Dengan demikian, berdasarkan analisis tersebut, dapat disimpulkan bahwa model memiliki performa yang baik dalam menghasilkan prediksi positif yang benar, dan precision yang tinggi menunjukkan kemampuan yang baik dalam menghindari hasil false positive.
 
 3. Recall
     Recall, juga dikenal sebagai sensitivitas, mengukur seberapa banyak dari kelas yang sebenarnya positif yang telah diidentifikasi dengan benar oleh model. Ini memberikan pemahaman tentang seberapa baik model dapat mengenali semua contoh yang positif.   
 
-    ![recall](https://github.com/hizidha/books-recommendation/blob/main/assets/recall.png?raw=true)
+   ![recall](https://github.com/user-attachments/assets/6f675037-c856-4f89-8022-1507276b17f4)
 
-    *Gambar 7. Rumus metrik evaluasi `recall`*
+    *. Hasil Recall*
 
-    ![visuliasasi-recall](https://github.com/hizidha/books-recommendation/blob/main/assets/visuliasasi-recall.png?raw=true)
-
-    *Gambar 8. Hasil Recall*
-
-    Gambar 8 menunjukkan visualisasi hasil dari metrik recall pada data train dan data validation. Dari visualisasi tersebut, terlihat bahwa recall pada data train cenderung meningkat seiring waktu, menunjukkan bahwa model mampu mengenali sebagian besar kasus positif yang sebenarnya ada pada data train seiring dengan proses pelatihan. Namun, pada data validation, recall terlihat lebih stabil, yang menunjukkan bahwa model memiliki performa yang konsisten dalam mengenali kasus positif pada data validation.
+    Gambar diatas menunjukkan visualisasi hasil dari metrik recall pada data train dan data validation. Dari visualisasi tersebut, terlihat bahwa recall pada data train cenderung meningkat seiring waktu, menunjukkan bahwa model mampu mengenali sebagian besar kasus positif yang sebenarnya ada pada data train seiring dengan proses pelatihan. Namun, pada data validation, recall terlihat lebih stabil, yang menunjukkan bahwa model memiliki performa yang konsisten dalam mengenali kasus positif pada data validation.
     
     Secara keseluruhan, recall pada kedua data juga relatif tinggi, menunjukkan bahwa model memiliki kemampuan yang baik dalam menangkap sebagian besar kasus positif yang sebenarnya ada. Hal ini menunjukkan bahwa model memiliki sensitivitas yang baik terhadap kasus positif.
 
