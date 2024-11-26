@@ -1,16 +1,22 @@
-<h1 align="center"> Books Recommendation </h1>
+<h1 align="left">Rekomendasi Buku -- Yulia Pratiwi</h1>
 
 ## Domain Proyek
 Sistem Rekomendasi Buku Berdasarkan Preferensi Pengguna dan Kategori Buku
 
 ### Latar Belakang
-Dalam era digitalisasi yang terus berkembang, semakin banyak orang mengakses informasi dan hiburan melalui media digital, termasuk dalam mencari dan membaca buku. Namun, dengan pertumbuhan jumlah buku dan variasi yang semakin luas, sering kali pengguna merasa kebingungan dalam memilih buku yang sesuai dengan minat dan preferensi mereka [1]. Hal ini bisa menjadi hambatan dalam meningkatkan minat baca dan literasi masyarakat secara keseluruhan. Selain itu, faktor kepadatan waktu dan kemudahan akses menjadi pertimbangan penting. Banyak pengguna saat ini memiliki waktu terbatas untuk melakukan pencarian buku secara manual di toko buku fisik atau situs web penjualan buku online [2]. Dalam konteks ini, kehadiran sistem rekomendasi buku yang cerdas dan efektif akan memberikan solusi yang sangat diharapkan.
+Perkembangan era digital telah mendorong masyarakat untuk semakin banyak memanfaatkan media digital dalam berbagai aspek kehidupan, termasuk dalam mencari dan membaca buku. Namun, dengan jumlah buku yang terus bertambah dan beragamnya pilihan, pengguna sering kali menghadapi kesulitan dalam menentukan buku yang sesuai dengan minat mereka (Widiastuti et al., 2022). Situasi ini dapat menjadi penghambat dalam upaya meningkatkan minat baca dan literasi di kalangan masyarakat. Selain itu, keterbatasan waktu serta kebutuhan akan akses yang praktis membuat pencarian buku secara manual, baik di toko fisik maupun di situs daring, menjadi kurang efisien (Al-Rosyid et al., 2021).
 
-Dengan menggunakan teknologi sistem rekomendasi pengguna dapat dengan mudah menemukan buku-buku yang sesuai dengan minat dan preferensi mereka tanpa harus menyisihkan waktu yang berlebihan. Hal ini akan memfasilitasi peningkatan minat baca dan aksesibilitas terhadap berbagai kategori buku, serta memberikan dampak positif dalam pembangunan pengetahuan dan literasi masyarakat secara luas.
+Untuk menjawab tantangan ini, sistem rekomendasi buku yang cerdas dan efektif menjadi solusi yang sangat dibutuhkan. Teknologi ini memungkinkan pengguna untuk menemukan buku yang sesuai dengan preferensi mereka dengan lebih cepat dan mudah, tanpa harus melalui proses pencarian yang memakan waktu. Dengan demikian, sistem rekomendasi ini diharapkan dapat meningkatkan minat baca dan memperluas aksesibilitas terhadap berbagai kategori buku, sekaligus memberikan dampak positif terhadap peningkatan literasi masyarakat secara umum (Nurpuzianah et al., 2023).
 
-### Urgensi Proyek
-Peningkatan minat baca dan aksesibilitas terhadap berbagai kategori buku dapat memberikan dampak positif dalam pembangunan pengetahuan dan minat literasi masyarakat secara luas [3]. Dengan adanya sistem rekomendasi ini, diharapkan dapat membantu pengguna menemukan buku-buku yang sesuai dengan minat mereka secara lebih efektif dan efisien.
+#### Urgensi Proyek
+Meningkatkan minat baca dan mempermudah akses terhadap berbagai jenis buku berpotensi memberikan kontribusi signifikan dalam membangun budaya literasi yang lebih baik (Nurpuzianah et al., 2023). Kehadiran sistem rekomendasi buku ini diharapkan dapat membantu pengguna menemukan bacaan yang relevan dengan minat mereka secara lebih efektif dan efisien.
 
+## Reference
+[1] Widiastuti, Y., Lestari, O. W., & Ambarwati, A. (2022). Preferensi media bacaan sastra siswa SMAN 1 Kraksaan: Cetak atau digital?. KEMBARA: Jurnal Keilmuan Bahasa, Sastra, Dan Pengajarannya, 8(2), 272-287.
+
+[2] Al-Rosyid, H., Purnama, B. E., & Uly, I. (2021). Sistem informasi penjualan buku berbasis website pada toko buku standard book seller pacitan. Menulis Buku Digital Modern, 33.
+
+[3] Nurpuzianah, M., Naashir, F. A., & Fitriyah, M. (2023). Peranan Perpustakaan Taman Literasi Dalam Meningkatkan Budaya Cinta Membaca. Jurnal Literasi dan Pembelajaran Indonesia, 3(2), 282-288.
 
 ## Business Undertanding
 Dalam mengembangkan sistem rekomendasi buku, diharapkan dapat memahami bahwa terdapat beberapa permasalahan yang perlu dipecahkan serta tujuan yang ingin dicapai untuk permasalahan yang telah dijelaskan di atas.
@@ -263,13 +269,13 @@ Sama seperti hal nya yang telah dilakukan pada proses **Data Preparation**, pros
 | similarity_data   | data yang digunakan untuk menghitung kesamaan antara buku-buku | 
 | items             | ['book_title', 'summary', 'book_author', 'rating', 'category']  | Dataframe yang akan ditampilkan kepada user |
 
-Sebagai contoh user akan memasukkan input judul `Death Of Long Steam Lady` dengan jumlah buku yang ingin direkomendasikan sebanyak `7`. Maka dapat dituliskan sebagai berikut:
+Sebagai contoh user akan memasukkan input judul `Dave Barry In Cyberspace` dengan jumlah buku yang ingin direkomendasikan sebanyak `7`. Maka dapat dituliskan sebagai berikut:
 
 ```
-book_recommendations('Death Of Long Steam Lady', 7)
+book_recommendations('Dave Barry In Cyberspace', 7)
 ```
 
-Dengan demikian sistem akan menampilkan data yang dapat dilihat pada Gambar 3, di mana akan ditampilkan 7 judul buku yang memiliki kemiripan dengan 'Death Of Long Steam Lady' dan diurutkan berdasarkan rating tertinggi yang diberikan oleh pengguna-pengguna lain.
+Dengan demikian sistem akan menampilkan data yang dapat dilihat pada Gambar 3, di mana akan ditampilkan 7 judul buku yang memiliki kemiripan dengan 'Dave Barry In Cyberspace' dan diurutkan berdasarkan rating tertinggi yang diberikan oleh pengguna-pengguna lain.
 
 *Tabel 14. Hasil rekomendasi buku yang tampil dengan Content Based Filtering*
 
@@ -410,18 +416,13 @@ Berdasarkan analisis di atas, model tersebut cenderung merupakan **good fit**. H
 
 
 ## Conclusion
-Setelah melalui seluruh proses yang telah dilakukan, dapat disimpulkan bahwa kedua metode pengembangan, yaitu Content Based Filtering dan Collaborative Filtering, berhasil memberikan rekomendasi kepada pengguna. Meskipun demikian, secara keseluruhan, Model Collaborative Filtering dinilai lebih unggul karena kemampuannya memanfaatkan kontribusi tidak langsung dari pengguna untuk menyusun rekomendasi dari pengguna lain yang memiliki preferensi atau minat serupa.
+Setelah melalui proses pelatihan model dan evaluasi, dapat disimpulkan bahwa sistem rekomendasi buku yang dikembangkan mampu memberikan rekomendasi yang relevan kepada pengguna. Model menunjukkan performa yang stabil dengan penurunan mean squared error (MSE) secara konsisten dari 0.181 pada awal pelatihan hingga 0.097 pada akhir pelatihan, yang berada di bawah batas toleransi yang ditetapkan (< 0.15).
 
-Pencapaian utama dari proyek ini adalah mencapai nilai presisi sebesar 0.8997, yang memenuhi kriteria presisi yang ditetapkan (> 0.80), dan nilai mean squared error (MSE) sebesar 0.0976, yang lebih kecil dari nilai maksimum yang diizinkan (0.15). Dengan demikian, dapat disimpulkan bahwa model yang dibangun cenderung cocok dengan data yang ada.
+Pencapaian lain yang signifikan adalah nilai precision sebesar 0.91 pada data latih dan 0.66 pada data validasi. Hal ini menunjukkan bahwa model mampu memberikan rekomendasi yang relevan, meskipun masih ada ruang untuk peningkatan pada generalisasi di data baru. Di sisi lain, nilai recall yang mencapai 0.40 pada data validasi menunjukkan bahwa model cukup inklusif dalam menangkap berbagai rekomendasi yang relevan.
 
-Untuk meningkatkan kejelasan, perbandingan antara kedua metode pengembangan telah ditekankan. Collaborative Filtering dinilai lebih efektif karena mampu memanfaatkan informasi dari pengguna lain, sedangkan Content Based Filtering terbatas pada informasi yang spesifik untuk setiap pengguna. Adapun arah pengembangan di masa depan, potensi untuk meningkatkan kinerja model atau mengintegrasikan pendekatan lain perlu dipertimbangkan. Hal ini dapat membuka jalan menuju rekomendasi yang lebih personal dan akurat untuk pengguna.
+Secara keseluruhan, model yang dibangun menunjukkan potensi yang baik dalam memberikan rekomendasi. Namun, untuk meningkatkan akurasi dan cakupan, beberapa langkah pengembangan di masa depan dapat dipertimbangkan, seperti tuning hyperparameter, augmentasi data, dan evaluasi dengan metrik tambahan seperti F1-score untuk memberikan gambaran performa yang lebih seimbang.
 
-Dengan demikian, proyek ini berhasil mencapai tujuannya dan memberikan landasan yang kuat untuk pengembangan lebih lanjut dalam bidang sistem rekomendasi.
+Proyek ini telah berhasil mencapai tujuannya dengan menghasilkan model rekomendasi yang andal serta memberikan landasan yang kuat untuk pengembangan lebih lanjut. Integrasi pendekatan tambahan, seperti hybrid filtering, berpotensi meningkatkan performa model secara keseluruhan dan memberikan rekomendasi yang lebih personal dan akurat kepada pengguna.
 
 
-## Reference
-[1] Widiastuti, Y., Lestari, O. W., & Ambarwati, A. (2022). Preferensi media bacaan sastra siswa SMAN 1 Kraksaan: Cetak atau digital?. KEMBARA: Jurnal Keilmuan Bahasa, Sastra, Dan Pengajarannya, 8(2), 272-287.
 
-[2] Al-Rosyid, H., Purnama, B. E., & Uly, I. (2021). Sistem informasi penjualan buku berbasis website pada toko buku standard book seller pacitan. Menulis Buku Digital Modern, 33.
-
-[3] Nurpuzianah, M., Naashir, F. A., & Fitriyah, M. (2023). Peranan Perpustakaan Taman Literasi Dalam Meningkatkan Budaya Cinta Membaca. Jurnal Literasi dan Pembelajaran Indonesia, 3(2), 282-288.
