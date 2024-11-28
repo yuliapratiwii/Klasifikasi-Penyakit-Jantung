@@ -231,7 +231,46 @@ Sehingga dataframe untuk **Modelling Content Based Filtering** memiliki panjang 
 
 6. Melakukan Splitting dataset
     Dataset akan dibagi menjadi beberapa beberapa folder yang memiliki kegunaan yang berbeda-beda yaitu data pelatihan dan data validasi. Dataset akan dibagi menjadi 80% data train dan 20% data validasi.
+### Kesimpulan
 
+Berdasarkan tahapan **Data Preprocessing** dan **Data Preparation** yang dilakukan untuk membangun sistem rekomendasi berbasis **Content-Based Filtering** dan **Collaborative Filtering**, berikut kesimpulan yang dapat diambil:
+
+#### **Data Preprocessing**
+1. **Pembersihan Data**  
+   - Dataset awal yang memiliki lebih dari satu juta baris telah melalui proses pembersihan untuk memastikan kualitas data yang optimal.  
+   - Proses ini melibatkan penghapusan nilai non-string dan simbol yang tidak diperlukan pada fitur `Category` agar fitur tersebut konsisten dan sesuai untuk analisis.  
+   - Nilai kategori yang bukan berupa huruf juga telah difilter, dengan pengecualian simbol '&' dan ',' untuk memastikan data tetap bermakna.  
+
+2. **Efek pada Ukuran Dataset**  
+   - Setelah pre-processing, jumlah data berkurang signifikan menjadi **607,758 baris**, menunjukkan efisiensi proses pembersihan dan penghapusan data yang tidak relevan.  
+
+#### **Data Preparation**
+1. **Penyederhanaan Dataset**  
+   - Dari dataset yang sudah dibersihkan, hanya 100 kategori teratas berdasarkan jumlah data yang dipilih untuk meningkatkan efisiensi proses dan fokus pada kategori yang dominan.  
+   - Setiap kategori diambil 15 judul teratas berdasarkan jumlah data, menghasilkan dataset akhir dengan **23,555 baris**.
+
+2. **Penyesuaian Format Data**  
+   - Dataset `data_books` hanya menyimpan fitur penting seperti `user_id`, `isbn`, `rating`, `book_title`, dan lainnya.  
+   - Header diubah menjadi lowercase dan data ditulis dalam proper case untuk memastikan konsistensi dan keterbacaan.
+
+3. **Data Preparation untuk Modelling**  
+   - Untuk **Content-Based Filtering**, dataset disesuaikan dengan rata-rata rating setiap buku dan penghapusan duplikat pada `book_title` dan `isbn`, menghasilkan ukuran akhir **1,448 baris**.
+   - Untuk **Collaborative Filtering**, fitur `user_id`, `isbn`, dan `rating` digunakan untuk membuat model interaksi pengguna, di mana data di-split menjadi **80% data pelatihan** dan **20% data validasi**.
+
+#### **Kekuatan Proses**
+1. **Komprehensif dan Sistematis**  
+   Proses pre-processing dan preparation dilakukan secara menyeluruh, memastikan dataset bersih, relevan, dan siap untuk digunakan dalam modelling.  
+2. **Efisiensi Data**  
+   Dataset besar berhasil dipangkas menjadi ukuran yang lebih kecil tanpa kehilangan informasi penting, memungkinkan proses modelling berjalan lebih cepat dan efisien.
+
+#### **Keterbatasan dan Rekomendasi**
+1. **Kemungkinan Hilangnya Informasi**  
+   Penghapusan data tertentu, seperti kategori non-alfabet, berpotensi menghilangkan informasi yang relevan. Disarankan untuk melakukan analisis lebih mendalam sebelum memfilter data.
+2. **Penggunaan Data Beragam**  
+   Penambahan fitur-fitur lain, seperti metadata buku atau ulasan pengguna, dapat meningkatkan akurasi dan kualitas model rekomendasi.  
+
+#### **Kesimpulan Umum**
+Proses **Data Preprocessing** dan **Data Preparation** telah berhasil mengubah dataset awal yang besar dan tidak terstruktur menjadi dataset yang lebih kecil, terstruktur, dan siap digunakan untuk membangun sistem rekomendasi berbasis **Content-Based Filtering** dan **Collaborative Filtering**. Dengan ukuran data yang efisien dan fitur yang relevan, sistem rekomendasi dapat diimplementasikan dengan lebih optimal.
 
 ## Modelling
 Sama seperti hal nya yang telah dilakukan pada proses **Data Preparation**, proses **Modelling** akan dilakukan menggunakan 2 metode yaitu Content Based Filtering dan Collaborative Filtering.
@@ -289,6 +328,42 @@ Dengan demikian sistem akan menampilkan data yang dapat dilihat pada Gambar 3, d
 | Robert Frost (The Great American Poets)            | From The Great Poets Series--Exquisite Small-F...    | Peter Porter              | 6.7    | American Poetry|
 | Its Thanksgiving                                   | From The First Thanksgiving Feast To Daddys Fo...    | Jack Prelutsky            | 4.0    | American Poetry|
 
+### Kesimpulan
+
+Berdasarkan penerapan model **Content-Based Filtering** untuk merekomendasikan buku, berikut kesimpulan yang dapat diambil:
+
+1. **Pemanfaatan Fitur Kategori**  
+   Model memanfaatkan fitur **kategori buku** untuk menghitung kemiripan antar buku dengan pendekatan **TF-IDF (Term Frequency-Inverse Document Frequency)**.  
+   - Teknik ini mengukur pentingnya suatu kategori dalam setiap buku, sehingga menghasilkan representasi fitur yang optimal untuk menentukan relevansi.  
+   - Matriks TF-IDF kemudian digunakan untuk menghitung kesamaan antar buku menggunakan metrik **cosine similarity**, yang memastikan kemiripan dihitung secara efisien dalam ruang multidimensi.
+
+2. **Proses Rekomendasi**  
+   Sistem dirancang untuk menerima input berupa judul buku, seperti *"Dave Barry In Cyberspace"*, dan jumlah rekomendasi (*k*) yang diinginkan oleh pengguna.  
+   - Dengan fungsi `book_recommendations`, sistem mencari buku dengan kategori yang serupa dan menampilkan daftar rekomendasi berdasarkan **rating tertinggi** dari pengguna lain.  
+   - Output tidak hanya mencakup judul buku, tetapi juga informasi tambahan seperti ringkasan, penulis, rating, dan kategori.
+
+3. **Hasil Rekomendasi**  
+   Rekomendasi yang dihasilkan menunjukkan relevansi kategori buku yang tinggi dengan buku input, yaitu *American Poetry*.  
+   - Buku seperti *"Miles Of Smiles"* dan *"Sing A Song Of Popcorn"* memiliki rating tinggi, menunjukkan kualitas rekomendasi yang baik.  
+   - Namun, sistem juga mencantumkan buku dengan rating lebih rendah seperti *"Walt Whitman: The Complete Poems"*, yang menunjukkan model tidak hanya mengandalkan rating tetapi juga mempertimbangkan kesamaan kategori.
+
+4. **Kekuatan Model**  
+   - **Personalization**: Sistem sangat personal karena hanya memanfaatkan fitur buku (konten) tanpa memerlukan data dari pengguna lain, sehingga cocok untuk pengguna baru dengan preferensi spesifik.  
+   - **Kemudahan Implementasi**: Pendekatan TF-IDF dan cosine similarity mudah diterapkan dan memproses data dengan efisien.  
+
+5. **Keterbatasan Model**  
+   - **Cold Start Item**: Model bergantung pada deskripsi kategori buku. Jika kategori tidak terdefinisi dengan baik, kualitas rekomendasi dapat menurun.  
+   - **Lack of Diversity**: Rekomendasi cenderung terbatas pada kategori serupa, sehingga dapat kurang bervariasi bagi pengguna dengan minat yang luas.
+
+### Rekomendasi  
+1. **Integrasi Metadata Tambahan**  
+   Selain kategori, model dapat ditingkatkan dengan memanfaatkan metadata lain, seperti popularitas buku atau ulasan pengguna, untuk memberikan rekomendasi yang lebih kaya.  
+2. **Hybrid Approach**  
+   Menggabungkan pendekatan **Content-Based Filtering** dengan **Collaborative Filtering** untuk meningkatkan keberagaman rekomendasi sekaligus mempertahankan personalisasi yang tinggi.  
+3. **Peningkatan Visualisasi**  
+   Memberikan antarmuka yang menampilkan rekomendasi dengan lebih menarik, seperti menambahkan sampul buku atau rating visual untuk meningkatkan pengalaman pengguna.  
+
+Secara keseluruhan, model **Content-Based Filtering** yang diterapkan memiliki performa baik dalam merekomendasikan buku dengan kategori relevan dan menghasilkan pengalaman personal bagi pengguna.
 
 ### Modelling: Collaborative Filtering
 1. Pembangunan Model
@@ -364,6 +439,42 @@ Berikut menunjukkan buku yang telah di rating tinggi oleh user lain dan memberik
 | 9 | The Last Day Of Summer       | Photography            |
 | 10 | Native Son                  | African American Men   |
 
+### Kesimpulan
+
+Berdasarkan penerapan model **Collaborative Filtering** menggunakan arsitektur neural network, berikut adalah kesimpulan yang dapat diambil:
+
+1. **Pembangunan Model**  
+   Model berbasis embedding telah dirancang untuk memprediksi rating buku oleh pengguna dengan memanfaatkan representasi laten dari pengguna dan buku.  
+   - **Vektor embedding** memungkinkan model untuk memahami hubungan laten antara pengguna dan buku.  
+   - Penggunaan fungsi aktivasi sigmoid memastikan output prediksi berada pada rentang [0,1], memungkinkan normalisasi prediksi.
+
+2. **Evaluasi Model**  
+   Model dikompilasi dengan fungsi loss **Binary Crossentropy** untuk meminimalkan kesalahan prediksi dan menggunakan optimizer **Adam** dengan learning rate 0.001 untuk pembelajaran yang efisien.  
+   - Metrik evaluasi seperti **Mean Squared Error (MSE)**, **Precision**, dan **Recall** menunjukkan performa model dalam menghasilkan prediksi yang akurat dan relevan.
+   - Tren precision dan recall yang baik menunjukkan model mampu meminimalkan hasil prediksi palsu dan mengenali hubungan relevan antara pengguna dan buku.
+
+3. **Training Model**  
+   Pelatihan model dilakukan selama 20 epoch dengan data training dan validasi yang disediakan.  
+   - Data validasi menunjukkan performa yang stabil, mencerminkan bahwa model tidak overfitting dan memiliki generalisasi yang baik.
+
+4. **Rekomendasi Buku**  
+   Berdasarkan preferensi pengguna tertentu (contohnya pengguna dengan ID `233579`), model mampu memberikan rekomendasi buku yang relevan dan berkualitas tinggi:  
+   - Buku seperti *"The Little Prince"* dan *"Falling Up"* yang masuk dalam kategori *Juvenile Fiction* dan *Juvenile Nonfiction* menunjukkan bahwa model berhasil menangkap minat pengguna dalam buku fiksi untuk pembaca muda.  
+   - Rekomendasi buku mencakup kategori yang beragam, seperti *Drama*, *Fantasy*, hingga *Photography*, yang mencerminkan kekayaan data yang dimanfaatkan oleh model untuk menghasilkan rekomendasi yang beragam.
+
+5. **Keseluruhan Performa**  
+   Model **Collaborative Filtering** yang dirancang berhasil memberikan rekomendasi yang personal dan akurat berdasarkan preferensi pengguna, seperti yang terlihat dari hasil rekomendasi untuk pengguna tertentu.  
+   - Model menunjukkan generalisasi yang baik, menjadikannya alat yang efektif untuk sistem rekomendasi buku di masa mendatang.  
+   - Berbagai kategori yang direkomendasikan juga menunjukkan bahwa model mampu menangkap dan mengintegrasikan variasi minat pengguna secara baik.
+
+### Saran
+Untuk meningkatkan performa dan fleksibilitas model, langkah-langkah berikut dapat dipertimbangkan:  
+1. **Penambahan Data**  
+   Memanfaatkan lebih banyak data pengguna dan buku untuk menangkap pola hubungan yang lebih kompleks.  
+2. **Hyperparameter Tuning**  
+   Mengoptimalkan ukuran embedding, learning rate, dan parameter lainnya untuk meningkatkan akurasi prediksi.  
+3. **Hybrid Approach**  
+   Menggabungkan pendekatan collaborative filtering dengan content-based filtering untuk menciptakan rekomendasi yang lebih kaya dan personal.
 
 ## Evaluation
 
@@ -399,9 +510,23 @@ Berikut menunjukkan buku yang telah di rating tinggi oleh user lain dan memberik
     
     Secara keseluruhan, recall pada kedua data juga relatif tinggi, menunjukkan bahwa model memiliki kemampuan yang baik dalam menangkap sebagian besar kasus positif yang sebenarnya ada. Hal ini menunjukkan bahwa model memiliki sensitivitas yang baik terhadap kasus positif.
 
-    Dengan demikian, berdasarkan penjelasan di atas, dapat disimpulkan bahwa model memiliki performa yang baik dalam mengenali kasus positif yang sebenarnya ada, dan recall yang tinggi menunjukkan sensitivitas yang baik dari model terhadap kasus positif.
+### Kesimpulan
 
-Berdasarkan analisis di atas, model tersebut cenderung merupakan **good fit**. Hal ini ditandai dengan performa yang baik dan stabil pada kedua data train dan val, serta tren yang menunjukkan peningkatan secara bertahap dari waktu ke waktu. Tidak terlihat gejala overfitting (perbedaan performa yang signifikan antara data train dan val), ataupun underfitting (performa yang rendah baik pada data train maupun val).
+Berdasarkan evaluasi menggunakan tiga metrik utama, yaitu **Mean Squared Error (MSE)**, **Precision**, dan **Recall**, dapat disimpulkan bahwa model memiliki performa yang baik secara keseluruhan dalam menangani data train maupun validation. Berikut adalah poin-poin utama dari kesimpulan ini:
+
+1. **Mean Squared Error (MSE)**  
+   Tren MSE yang menurun pada data train dan validation menunjukkan bahwa model mampu mengurangi kesalahan prediksi seiring waktu. Nilai MSE yang relatif rendah menunjukkan bahwa model berhasil memprediksi nilai target dengan tingkat kesalahan yang kecil, mencerminkan kualitas model yang baik.
+
+2. **Precision**  
+   Precision yang meningkat pada data train menunjukkan bahwa model semakin baik dalam menghindari prediksi positif palsu selama pelatihan. Meskipun terdapat sedikit fluktuasi pada data validation, precision tetap berada pada tingkat yang relatif tinggi, yang menunjukkan kemampuan model dalam memberikan hasil positif yang benar secara konsisten.
+
+3. **Recall**  
+   Recall yang tinggi pada data train dan validation menunjukkan bahwa model memiliki sensitivitas yang baik terhadap kelas positif. Model mampu mengenali sebagian besar kasus positif yang sebenarnya ada pada kedua data, yang mencerminkan konsistensi performa model.
+
+4. **Stabilitas dan Tren Performa**  
+   Tidak ada indikasi overfitting, karena performa model pada data train dan validation tidak menunjukkan perbedaan yang signifikan. Sebaliknya, tren positif yang stabil menunjukkan bahwa model memiliki kemampuan generalisasi yang baik tanpa kehilangan performa pada data yang belum pernah dilihat.
+
+Secara keseluruhan, model ini dapat dikategorikan sebagai **good fit**, karena memiliki performa yang stabil, akurat, dan mampu menjaga keseimbangan antara train dan validation. Model dapat digunakan dengan percaya diri untuk tugas prediksi pada domain terkait, dengan potensi optimasi lebih lanjut jika diperlukan.
 
 
 ## Conclusion
