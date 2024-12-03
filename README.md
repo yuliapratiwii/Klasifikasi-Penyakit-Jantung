@@ -42,6 +42,16 @@ Proyek ini akan memanfaatkan salah satu dataset yang bersifat open-source dari s
 
 Dataset ini merupakan kumpulan data dari judul buku, penulis/pencipta buku, penerbit, tahun terbit, kategori buku, hingga rating dari setiap user yang tersebar dari 4 file yang sebelumnya telah disebutkan. Dengan demikian, dataset ini dapat digunakan untuk berbagai analisis dan tugas pembelajaran mesin, termasuk tetapi tidak terbatas pada analisis perilaku pembaca berdasarkan peringkat buku yang diberikan, analisis tren dalam preferensi pembaca terhadap genre tertentu atau penulis tertentu, ataupun yang akan diangkat pada proyek kali ini, yaitu membangun sistem rekomendasi berdasarkan kategori buku.
 
+### Deskripsi Dataset
+Dataset yang digunakan adalah [Book-Crossing Dataset](https://www.kaggle.com/datasets/ruchi798/bookcrossing-dataset), terdiri dari:
+- **BX-Book-Ratings.csv:** Data rating buku.
+- **BX-Users.csv:** Informasi pengguna.
+- **BX-Books.csv:** Informasi buku.
+- **Preprocessed_data.csv:** Data gabungan hasil preprocessing.
+
+
+---
+
 Fitur pada keempat Dataset akan dipaparkan dalam beberapa tabel berikut:
 
 *Tabel 1. Fitur pada `BX-Book-Ratings.csv`*
@@ -212,6 +222,15 @@ Selanjutnya adalah menampilkan 10 data teratas dan terbawah menurut jumlah kemun
 *10 data category terbawah*
 
 
+#### Distribusi Rating
+Grafik distribusi rating menunjukkan sebagian besar pengguna memberikan rating antara 7-10.
+
+#### Kategori Buku Populer
+Visualisasi kategori buku menunjukkan bahwa kategori *Fiction* mendominasi dataset, diikuti *Juvenile Fiction* dan *Science*.
+
+#### Distribusi Usia Pengguna
+Sebagian besar pengguna berada di rentang usia 20-35 tahun, menunjukkan audiens utama untuk rekomendasi ini.
+
 ## Data Preprocessing
 1. Mengecek ukuran dari dataset yang digunakan pada proyek ini, antara lain:
 
@@ -363,7 +382,20 @@ Berdasarkan tahapan **Data Preprocessing** dan **Data Preparation** yang dilakuk
    - Untuk **Content-Based Filtering**, dataset disesuaikan dengan rata-rata rating setiap buku dan penghapusan duplikat pada `book_title` dan `isbn`, menghasilkan ukuran akhir **1,448 baris**.
    - Untuk **Collaborative Filtering**, fitur `user_id`, `isbn`, dan `rating` digunakan untuk membuat model interaksi pengguna, di mana data di-split menjadi **80% data pelatihan** dan **20% data validasi**.
 
+### Langkah Preprocessing
+1. Menghapus kolom tidak relevan seperti `Unnamed: 0` dan `img_*`.
+2. Membersihkan nilai kategori yang tidak valid.
+3. Menghapus rating 0 untuk meningkatkan akurasi analisis.
 
+### Content-Based Filtering
+1. Membuat representasi TF-IDF dari kategori buku.
+2. Menghitung kesamaan antar buku menggunakan cosine similarity.
+
+### Collaborative Filtering
+1. Encoding data `user_id` dan `isbn`.
+2. Membagi data menjadi 80% data pelatihan dan 20% validasi.
+
+---
 ## Modelling
 Sama seperti hal nya yang telah dilakukan pada proses **Data Preparation**, proses **Modelling** akan dilakukan menggunakan 2 metode yaitu Content Based Filtering dan Collaborative Filtering.
 
@@ -558,10 +590,42 @@ Berdasarkan penerapan model **Collaborative Filtering** menggunakan arsitektur n
    Model **Collaborative Filtering** yang dirancang berhasil memberikan rekomendasi yang personal dan akurat berdasarkan preferensi pengguna, seperti yang terlihat dari hasil rekomendasi untuk pengguna tertentu.  
    - Model menunjukkan generalisasi yang baik, menjadikannya alat yang efektif untuk sistem rekomendasi buku di masa mendatang.  
    - Berbagai kategori yang direkomendasikan juga menunjukkan bahwa model mampu menangkap dan mengintegrasikan variasi minat pengguna secara baik.
+   - 
+### Content-Based Filtering
+1. **Pendekatan:** Menggunakan kategori buku untuk menentukan kemiripan antar buku.
+2. **Output:** Rekomendasi berdasarkan kategori dan rating tertinggi.
 
+**Contoh Output:**
+| Book Title                 | Summary               | Rating |
+|----------------------------|-----------------------|--------|
+| The Little Prince          | Classic for children | 9.1    |
+| Falling Up                 | Poetry for kids      | 8.8    |
+
+### Collaborative Filtering
+1. **Pendekatan:** Menggunakan neural network dengan embedding.
+2. **Evaluasi:** 
+   - Precision: 0.91 (train), 0.66 (validation)
+   - Recall: 0.40 (validation)
+   - MSE: 0.097 (di bawah batas 0.15).
+
+**Contoh Output Rekomendasi:**
+| No | Book Title           | Category            |
+|----|----------------------|---------------------|
+| 1  | The Little Prince    | Juvenile Fiction    |
+| 2  | Falling Up           | Juvenile Nonfiction |
+| 3  | Child Is Born, A     | Family Relationships|
+
+---
 
 ## Evaluation
+### Metrik Evaluasi
+ ![Metrik Evaluasi](https://github.com/user-attachments/assets/c7f48575-e34a-4d35-9e05-6e05285ecc13).
 
+### Insight Evaluasi
+1. **Precision Tinggi:** Menunjukkan sistem menghasilkan rekomendasi yang relevan.
+2. **Recall Rendah:** Masih ada buku relevan yang terlewat.
+
+---
 1. Mean Squared Error (MSE)
     MSE adalah singkatan dari "Mean Squared Error" atau "Rata-rata Kesalahan Kuadrat". Ini adalah salah satu metrik evaluasi yang umum digunakan dalam statistik, ilmu data, dan machine learning untuk mengukur seberapa baik model memprediksi nilai target pada data yang diberikan. MSE mengukur rata-rata dari kuadrat perbedaan antara nilai aktual dan nilai yang diprediksi oleh model. Dengan demikian, semakin rendah nilai MSE, semakin baik model dalam memprediksi nilai target.
 
