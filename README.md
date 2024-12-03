@@ -125,6 +125,81 @@ Berdasarkan tabel-tabel di atas, maka pada proyek kali ini akan menggunakan sala
 | state                  | 2123                 |
 | country                | 414                  |
 
+Setelah melakukan observasi pada dataset yang diunduh pada kaggle, didapat informasi sebagai berikut:
+- Terdapat 1031175 baris dalam _dataset_
+- Terdapat 19 kolom yaitu 'Unnamed: 0', 'user_id', 'location', 'age', 'isbn', 'rating', 'book_title', 'book_author', 'year_of_publication', 'publisher', 'img_s', 'img_m', 'img_l', 'Summary', 'Language', 'Category', 'city', 'state', 'country'.  
+
+Untuk penjelasan mengenai 19 kolom yaitu sebagai berikut:  
+- `user_id` : id dari pengguna
+- `location` : lokasi/alamat pengguna
+- `age` : umur pengguna
+- `isbn` : kode ISBN (International Standard Book Number) buku
+- `rating` : rating dari buku
+- `book_title` : judul buku
+- `book_author` : penulis buku
+- `year_of_publication` : tahun terbit buku
+- `publisher` : penerbit buku
+- `img_s` : gambar sampul buku (ukuran kecil)
+- `img_m` : gambar sampul buku (ukuran sedang)
+- `img_l` : gambar sampul buku (ukuran besar)
+- `Summary` : ringkasan/sinopsis buku
+- `Language` : bahasa yang digunakan buku
+- `Category` : kategori buku
+- `city` : kota pengguna
+- `state` : negara bagian penguna
+- `country` : negara pengguna
+***
+
+### Sample Data
+
+| Unnamed: 0 | user_id | location | age | isbn | rating | book_title | book_author | year_of_publication | publisher | img_s | img_m | img_l | summary | language | category | city | state | country |  
+| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | 
+| 0 | 0 | 2 | stockton, california, usa | 18 | 0195153448 | 0 | Classical Mythology | 2002 | Oxford University Press | http://images.amazon.com/images/P/0195153448.0... | http://images.amazon.com/images/P/0195153448.0... | http://images.amazon.com/images/P/0195153448.0...  | Provides an introduction to classical myths pl... | en | ['Social Science'] | stockton | california | usa  
+
+
+Tabel 3. informasi singkat mengenai data  
+
+| #  | Column       		| Non-Null Count | Dtype  |
+| -- | -------------------- | -------------- | ------ |
+| 0  | Unnamed: 0  			| 1031175  		 | int64  |
+| 1  | user_id      		| 1031175  		 | int64  |
+| 2  | location  			| 1031175  		 | object |
+| 3  | age  				| 1031175  		 | float64|
+| 4  | isbn  				| 1031175  		 | object |
+| 5  | rating  				| 1031175  		 | int64  |
+| 6  | book_title   		| 1031175  		 | object |
+| 7  | book_author 			| 1031175  		 | object |
+| 8  | year_of_publication  | 1031175  		 | float64|
+| 9  | publisher 			|  1031175 		 | object |
+| 10 | img_s				| 1031175  		 | object |
+| 11 | img_m				| 1031175  		 | object |
+| 12 | img_l				| 1031175  		 | object |
+| 13 | Summary				| 1031175  		 | object |
+| 14 | Language				| 1031175  		 | object |
+| 15 | Category				| 1031175  		 | object |
+| 16 | city					| 1017072  		 | object |
+| 17 | state				| 1008377  		 | object |
+| 18 | country 				| 995801   		 | object |
+
+Tabel 4. Distribusi variabel rating
+
+| rating | count |
+|--------|-------|
+|0       |647323 |
+|1       |1481   |
+|2       |2375   |
+|3       |5118   |
+|4       |7617   |
+|5       |45355  |
+|6       |31689  |
+|7       |66404  |
+|8       |91806  |
+|9       |60780  |
+|10      |71227  |
+
+Dari tabel 2 dan 3, dapat dilihat ada beberapa kolom yang tidak akan digunakan dan akan lebih baik jika di hapus. Dari tabel 4 dapat dilihat bahwa 0 ada rating artinya pengguna pernah membaca buku, tetapi tidak memberikan rating, sehingga akan lebih baik jika rating 0 di hapus, menyisakan 1 s.d. 10.
+
+
 ### Univariate Exploratory Data Analysis
 Selanjutnya adalah menampilkan 10 data teratas dan terbawah menurut jumlah kemunculan data pada fitur `Category` yang dapat dilihat pada Gambar 1.
 
@@ -172,6 +247,37 @@ Setelah melakukan beberapa tahapan di atas, selanjutnya adalah mengecek ukuran d
 
 
 ## Data Preparation
+
+***
+### Langkah-langkah pra-pemrosesan data
+1. Membaca _dataset_ menggunakan _pandas_
+2. _Drop_ data kosong (_NaN_)
+3. _Drop_ kolom yang tidak akan digunakan
+4. _Drop_ nilai yang _invalid_ pada kolom
+5. Pemilihan _Category_
+#### Membaca _dataset_
+Pada bagian ini akan digunakan _library pandas_ untuk dapat membaca dan merubah _dataset_ menjadi _DataFrame_,  dari berkas yang diunduh akan ada 2 _file_, diproyek ini digunakan file dengan nama _Books Data with Category Language and Summary_ yang didalam file akan ditemukan berkas csv yang datanya sudah di proses terlebih dahulu. _Sample dari _dataset_ ini dapat dilihat pada tabel 2.
+
+#### Drop data kosong
+Pada bagian ini kita dapat melihat tabel 3 bahwa kolom `city, state, dan country` jumlahnya tidak sama dengan kolom lainnya. Untuk proyek ini, akan digunakan fungsi `dropna()`, dengan fungsi ini jika ada data kosong dalam bagian baris _DataFrame_ maka seluruh baris akan dihapus. Untuk melihat _count_ dari tiap kolom setelah dihapus dapat dilihat di tabel 5. 
+
+Tabel 5. Informasi tentang data setelah _preprocess_  
+
+| #  | Column               | Non-Null Count | Dtype  |
+| -- | -------------------- | -------------- | ------ |
+| 0  | user_id              | 217314         | int64  |
+| 1  | rating               | 217314         | int64  |
+| 2  | book_title           | 217314         | object |
+| 3  | book_author          | 217314         | object |
+| 4  | publisher            | 217314         | object |
+| 5  | Category             | 217314         | object |
+
+#### Drop kolom/nilai 
+Pada bagian ini akan di hapus kolom yang tidak akan digunakan, tujuan penghapusan ini adalah untuk mengurangi dimensi yang dibutuhkan, berikut adalah kolom yang dihapus `'Unnamed: 0','location','isbn', 'img_s','img_m', 'img_l', 'city','age','state','Language','country', 'year_of_publication', 'Summary'`. Selain kolom akan dihapus nilai yang tidak sesuai dengan konteks seperti pada kolom Category `'9'` dan 0 pada rating. Hasil akhir dapat dilihat pada tabel 5.
+
+### Pemilihan _Category_
+Pada bagian ini akan dipilih dari _category_ secara spesifik, pemilihan ini dilakukan dikarenakan sumber daya yang dimiliki untuk menghitung tidak memadai untuk menggunakan seluruh _category_. _Category_ yang akan dipakai adalah `'Religion', 'Body Mind Spirit', 'Juvenile Nonfiction', 'Social Science', 'Business Economics', 'Family Relationships', 'Self Help', 'Health Fitness', 'Cooking', 'Travel', 'Poetry', 'True Crime', 'Psychology', 'Science', 'Computers'`.
+
 1. Dikarenakan terlalu banyak baris dan data yang berbeda pada fitur 'Category', maka pada studi kasus kali ini akan menggunakan 100 data category dengan jumlah data teratas saja, serta hanya mengambil 15 judul dengan index teratas untuk setiap 'Category'-nya.
 
 *Tabel 10. Ukuran dataset dengan 100 data unik Category*
@@ -257,20 +363,6 @@ Berdasarkan tahapan **Data Preprocessing** dan **Data Preparation** yang dilakuk
    - Untuk **Content-Based Filtering**, dataset disesuaikan dengan rata-rata rating setiap buku dan penghapusan duplikat pada `book_title` dan `isbn`, menghasilkan ukuran akhir **1,448 baris**.
    - Untuk **Collaborative Filtering**, fitur `user_id`, `isbn`, dan `rating` digunakan untuk membuat model interaksi pengguna, di mana data di-split menjadi **80% data pelatihan** dan **20% data validasi**.
 
-#### **Kekuatan Proses**
-1. **Komprehensif dan Sistematis**  
-   Proses pre-processing dan preparation dilakukan secara menyeluruh, memastikan dataset bersih, relevan, dan siap untuk digunakan dalam modelling.  
-2. **Efisiensi Data**  
-   Dataset besar berhasil dipangkas menjadi ukuran yang lebih kecil tanpa kehilangan informasi penting, memungkinkan proses modelling berjalan lebih cepat dan efisien.
-
-#### **Keterbatasan dan Rekomendasi**
-1. **Kemungkinan Hilangnya Informasi**  
-   Penghapusan data tertentu, seperti kategori non-alfabet, berpotensi menghilangkan informasi yang relevan. Disarankan untuk melakukan analisis lebih mendalam sebelum memfilter data.
-2. **Penggunaan Data Beragam**  
-   Penambahan fitur-fitur lain, seperti metadata buku atau ulasan pengguna, dapat meningkatkan akurasi dan kualitas model rekomendasi.  
-
-#### **Kesimpulan Umum**
-Proses **Data Preprocessing** dan **Data Preparation** telah berhasil mengubah dataset awal yang besar dan tidak terstruktur menjadi dataset yang lebih kecil, terstruktur, dan siap digunakan untuk membangun sistem rekomendasi berbasis **Content-Based Filtering** dan **Collaborative Filtering**. Dengan ukuran data yang efisien dan fitur yang relevan, sistem rekomendasi dapat diimplementasikan dengan lebih optimal.
 
 ## Modelling
 Sama seperti hal nya yang telah dilakukan pada proses **Data Preparation**, proses **Modelling** akan dilakukan menggunakan 2 metode yaitu Content Based Filtering dan Collaborative Filtering.
@@ -467,14 +559,6 @@ Berdasarkan penerapan model **Collaborative Filtering** menggunakan arsitektur n
    - Model menunjukkan generalisasi yang baik, menjadikannya alat yang efektif untuk sistem rekomendasi buku di masa mendatang.  
    - Berbagai kategori yang direkomendasikan juga menunjukkan bahwa model mampu menangkap dan mengintegrasikan variasi minat pengguna secara baik.
 
-### Saran
-Untuk meningkatkan performa dan fleksibilitas model, langkah-langkah berikut dapat dipertimbangkan:  
-1. **Penambahan Data**  
-   Memanfaatkan lebih banyak data pengguna dan buku untuk menangkap pola hubungan yang lebih kompleks.  
-2. **Hyperparameter Tuning**  
-   Mengoptimalkan ukuran embedding, learning rate, dan parameter lainnya untuk meningkatkan akurasi prediksi.  
-3. **Hybrid Approach**  
-   Menggabungkan pendekatan collaborative filtering dengan content-based filtering untuk menciptakan rekomendasi yang lebih kaya dan personal.
 
 ## Evaluation
 
