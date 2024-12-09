@@ -77,14 +77,15 @@ docker run -d -p 3000:3000 --name hranalysis -v C:\Users\62859\Temporary:/metaba
    - Job Satisfaction vs Attrition
 
 ## **6. Action Items (Tugas yang Harus Dilakukan)**
-| **No** | **Action Item**                | **Deskripsi**                                        | **Deadline**   | **Status** |
-|-------|---------------------------------|-----------------------------------------------------|----------------|------------|
-| 1     | Buat dan jalankan container Metabase | Menjalankan Metabase di Docker dengan volume lokal  | ✅ Selesai     | ✅ Selesai  |
-| 2     | Impor dataset karyawan           | Memasukkan file CSV ke dalam Metabase                | 🕒 Sedang berlangsung | 🔄 Proses |
-| 3     | Buat dashboard Metabase         | Buat dashboard berisi 8 visualisasi yang dibutuhkan | 📅 2 hari     | 🔄 Proses |
-| 4     | Salin file `.db.mv.db` ke lokal | Pastikan file database `.db.mv.db` tersimpan di lokal| 📅 1 hari     | 🔄 Proses |
-| 5     | Backup file database Metabase   | Backup file database secara manual                  | 📅 1 hari     | ⏳ Belum   |
-| 6     | Dokumentasi proyek              | Menyusun dokumentasi proyek seperti ini             | 📅 1 hari     | ✅ Selesai  |
+| **No** | **Action Item**                   | **Deskripsi**                                        | **Deadline** | **Status**   |
+|--------|------------------------------------|------------------------------------------------------|---------------|--------------|
+| 1      | Pembuatan Model Machine Learning   | Melatih model prediksi attrition di Google Colab    | ✅ Selesai    | ✅ Selesai   |
+| 2      | Buat dan jalankan container Metabase | Menjalankan Metabase di Docker dengan volume lokal  | ✅ Selesai    | ✅ Selesai   |
+| 3      | Impor dataset karyawan              | Memasukkan file CSV ke dalam Metabase                | ✅ Selesai    | ✅ Selesai   |
+| 4      | Buat dashboard Metabase            | Buat dashboard berisi 8 visualisasi yang dibutuhkan | ✅ Selesai    | ✅ Selesai   |
+| 5      | Salin file `.db.mv.db` ke lokal    | Pastikan file database `.db.mv.db` tersimpan di lokal| ✅ Selesai    | ✅ Selesai   |
+| 6      | Backup file database Metabase      | Backup file database secara manual                   | ✅ Selesai    | ✅ Selesai   |
+| 7      | Dokumentasi proyek                 | Menyusun dokumentasi proyek seperti ini              | ✅ Selesai    | ✅ Selesai   |
 
 ## **7. Risiko dan Mitigasi**
 | **Risiko**                     | **Dampak**              | **Mitigasi**                                      |
