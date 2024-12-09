@@ -37,6 +37,22 @@ Visualisasi data meliputi analisis tingkat keluar karyawan berdasarkan:
    - **Attrition by Age Group**: Menampilkan tingkat attrition berdasarkan usia.
    - **Job Satisfaction vs Attrition**: Menganalisis pengaruh kepuasan kerja terhadap tingkat attrition.
 
+## Business Understanding
+Jaya Jaya Maju merupakan perusahaan multinasional yang berdiri sejak tahun 2000, dengan lebih dari 1000 karyawan yang tersebar di seluruh negeri. Meskipun perusahaan ini telah berkembang menjadi cukup besar, mereka masih menghadapi tantangan signifikan dalam mengelola karyawannya. Salah satu dampak utama dari tantangan ini adalah tingginya *attrition rate*, yaitu rasio jumlah karyawan yang keluar dengan total karyawan keseluruhan, yang mencapai lebih dari 10%. Tingginya *attrition rate* ini mengindikasikan adanya masalah dalam mempertahankan karyawan, yang dapat berdampak negatif pada produktivitas, biaya rekrutmen, dan stabilitas operasional perusahaan.
+
+### Permasalahan Bisnis
+
+1. Seberapa tinggi tingkat attrition di perusahaan ini?
+2. Faktor-faktor apa saja yang mempengaruhi keputusan karyawan untuk meninggalkan perusahaan?
+3. Apakah ada perbedaan tingkat attrition berdasarkan role atau departemen tertentu di perusahaan?
+4. Bagaimana pengaruh lembur (overtime) terhadap keputusan karyawan untuk keluar dari perusahaan?
+
+### Cakupan Proyek
+
+* Analisis Data: Menggunakan data karyawan yang ada untuk mengidentifikasi faktor-faktor utama yang mempengaruhi attrition.
+* Visualisasi & Pelaporan: Mengembangkan dashboard bisnis yang dapat digunakan oleh manajer HR untuk memonitor dan menganalisis faktor-faktor tersebut secara visual.
+* Rekomendasi & Intervensi: Berdasarkan hasil analisis, memberikan rekomendasi untuk intervensi yang dapat dilakukan untuk mengurangi attrition rate dan meningkatkan kepuasan karyawan.
+
 ## **4. Struktur Proyek**
 ```
 project-root/
@@ -94,7 +110,46 @@ docker run -d -p 3000:3000 --name hranalysis -v C:\Users\62859\Temporary:/metaba
 | Docker container gagal berjalan | Metabase tidak bisa diakses | Gunakan perintah `docker logs hranalysis` untuk debug |
 | Volume tidak terpasang dengan benar | Database hilang saat restart | Pastikan volume lokal dipetakan ke `/metabase.db`|
 
-## **8. Kesimpulan**
-- Proyek **HR Analysis** bertujuan untuk menganalisis tingkat keluar masuk karyawan di perusahaan.
-- Menggunakan **Metabase** dengan database **H2** yang disimpan di folder lokal (`.db.mv.db`).
-- Dashboard interaktif disusun untuk memberikan informasi kepada manajer dan tim SDM.
+## **8. Business Dashboard**
+
+Dashboard ini dirancang untuk memberikan wawasan komprehensif kepada tim HR mengenai faktor-faktor yang berkontribusi terhadap keputusan karyawan untuk meninggalkan perusahaan. Dengan dashboard ini, tim HR dapat:
+
+- Mengidentifikasi area atau departemen yang memiliki tingkat attrition tinggi.
+- Menganalisis faktor-faktor seperti lembur, kepuasan kerja, dan kelompok demografis yang mungkin mempengaruhi attrition.
+- Mengambil tindakan proaktif untuk meningkatkan retensi karyawan dan mengurangi biaya terkait dengan pergantian karyawan.
+
+
+## Conclusion
+
+1. Seberapa tinggi tingkat attrition di perusahaan ini?
+    * Jawaban: Tingkat attrition di perusahaan ini adalah sekitar 17%. Ini berarti bahwa satu dari enam karyawan meninggalkan perusahaan dalam jangka waktu tertentu, menunjukkan bahwa tingkat keluar karyawan cukup signifikan.
+
+2. Faktor-faktor apa saja yang mempengaruhi keputusan karyawan untuk meninggalkan perusahaan?
+    * Jawaban: Beberapa faktor utama yang mempengaruhi keputusan karyawan untuk meninggalkan perusahaan meliputi:
+        * Lembur (Overtime): Karyawan yang sering bekerja lembur cenderung memiliki kemungkinan lebih tinggi untuk keluar dari perusahaan.
+        * Status Perkawinan: Karyawan yang belum menikah (single) menunjukkan tingkat attrition yang lebih tinggi, yang mungkin mencerminkan mobilitas yang lebih besar dan keinginan untuk mencari peluang baru.
+
+3. Apakah ada perbedaan tingkat attrition berdasarkan role atau departemen tertentu di perusahaan?
+    * Jawaban: Ya, terdapat perbedaan tingkat attrition berdasarkan role dan departemen. Misalnya, role seperti Sales Representative dan departemen seperti Sales menunjukkan tingkat attrition yang lebih tinggi dibandingkan role atau departemen lain. Hal ini menunjukkan bahwa beban kerja, tekanan, dan mungkin juga struktur kompensasi di departemen-departemen ini dapat berkontribusi pada keputusan karyawan untuk meninggalkan perusahaan.
+
+4. Bagaimana pengaruh lembur (overtime) terhadap keputusan karyawan untuk keluar dari perusahaan?
+    * Jawaban: Lembur memiliki pengaruh signifikan terhadap keputusan karyawan untuk meninggalkan perusahaan. Data menunjukkan bahwa karyawan yang sering bekerja lembur (overtime) memiliki tingkat attrition yang lebih tinggi. Ini mungkin terkait dengan tingkat stres yang lebih tinggi dan ketidakseimbangan antara kehidupan kerja dan pribadi.
+
+### Rekomendasi Action Items
+
+Berikan beberapa rekomendasi action items yang harus dilakukan perusahaan guna menyelesaikan permasalahan atau mencapai target mereka.
+
+1. Mengelola dan Mengurangi Lembur:
+    * Evaluasi dan sesuaikan beban kerja untuk mengurangi lembur berlebih yang dapat mempengaruhi keseimbangan kehidupan kerja dan meningkatkan tingkat attrition.
+2. Meningkatkan Kepuasan Kerja dan Lingkungan Kerja:
+    * Implementasikan program peningkatan kepuasan kerja dan ciptakan lingkungan kerja yang lebih mendukung untuk menjaga keterlibatan dan retensi karyawan.
+3. Strategi Retensi di Departemen Kritis:
+    * Fokuskan upaya retensi pada departemen dan role yang menunjukkan tingkat attrition tinggi, seperti `Sales`. Program retensi yang ditargetkan dapat mencakup insentif, pengakuan, dan jalur karir yang jelas.
+4. Penilaian dan Tindakan Berkelanjutan:
+    * Pantau terus faktor-faktor yang mempengaruhi attrition melalui dashboard dan lakukan tindakan cepat saat masalah mulai muncul.
+
+Dengan mengikuti rekomendasi ini, perusahaan diharapkan dapat menurunkan tingkat attrition, meningkatkan retensi karyawan, dan memperkuat stabilitas serta efisiensi operasional secara keseluruhan.
+
+
+Username: yuliapratiwi169@gmail.com
+Password: Skylight169
