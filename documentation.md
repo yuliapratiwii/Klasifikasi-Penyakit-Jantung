@@ -118,6 +118,7 @@ Dashboard ini dirancang untuk memberikan wawasan komprehensif kepada tim HR meng
 - Menganalisis faktor-faktor seperti lembur, kepuasan kerja, dan kelompok demografis yang mungkin mempengaruhi attrition.
 - Mengambil tindakan proaktif untuk meningkatkan retensi karyawan dan mengurangi biaya terkait dengan pergantian karyawan.
 
+![Yulia Pratiwi - Dashboard](https://github.com/user-attachments/assets/9100312b-cb53-4c19-8052-061ca4d50812)
 
 ## Conclusion
 
@@ -152,4 +153,5 @@ Dengan mengikuti rekomendasi ini, perusahaan diharapkan dapat menurunkan tingkat
 
 
 Username: yuliapratiwi169@gmail.com
+
 Password: Skylight169
