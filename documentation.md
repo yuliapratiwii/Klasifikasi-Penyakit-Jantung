@@ -16,23 +16,24 @@ Visualisasi data meliputi analisis tingkat keluar karyawan berdasarkan:
 
 ---
 
-## **2. Permasalahan Bisnis**
+## **2. Cakupan Proyek**
 
-Jaya Jaya Maju merupakan perusahaan multinasional dengan lebih dari 1000 karyawan. Meskipun perusahaan berkembang pesat, mereka menghadapi tantangan dalam mempertahankan karyawan akibat tingginya *attrition rate* yang mencapai lebih dari 10%. Ini menyebabkan beberapa dampak negatif seperti:
+Pada proyek ini, tujuan utama adalah untuk mengidentifikasi faktor-faktor yang memengaruhi *attrition* karyawan serta membangun sistem prediksi berbasis machine learning yang dapat memprediksi apakah seorang karyawan akan keluar dari perusahaan atau tidak. 
 
-- **Peningkatan Biaya Rekrutmen:** Biaya tambahan untuk merekrut, melatih, dan mengintegrasikan karyawan baru.
-- **Penurunan Produktivitas:** Beban kerja meningkat bagi karyawan yang tersisa, mengurangi produktivitas.
-- **Ketidakstabilan Operasional:** Pergantian karyawan yang tinggi dapat mengganggu kelancaran operasi bisnis.
+**Pekerjaan Utama yang Dilakukan:**
+1. **Eksplorasi Data:** Menjelajahi dan memvisualisasikan data karyawan untuk mengidentifikasi pola-pola signifikan.
+2. **Persiapan Data:** Membersihkan data, mengatasi nilai kosong, dan mengonversi data ke format yang sesuai untuk analisis.
+3. **Pengembangan Model Prediksi:** Melatih model prediksi berbasis Random Forest untuk memprediksi tingkat *attrition* karyawan.
+4. **Membangun Dashboard:** Membuat dashboard interaktif menggunakan Metabase untuk memantau tingkat *attrition* dan memberikan wawasan kepada tim manajemen.
 
-**Urgensi & Risiko:** Jika masalah ini tidak diatasi, perusahaan berisiko kehilangan talenta terbaik, merusak citra perusahaan, dan menghadapi penurunan daya saing di pasar global.
+**Batasan Proyek:**
+- Data yang digunakan terbatas pada informasi yang tersedia dalam dataset yang diberikan.
+- Proyek ini hanya memfokuskan pada analisis karyawan di satu perusahaan (Jaya Jaya Maju).
+- Output utama proyek ini adalah model prediksi *attrition* dan dashboard visualisasi data.
 
-**Pertanyaan Bisnis:**
-
-1. Seberapa tinggi tingkat *attrition* di perusahaan ini?
-2. Faktor-faktor apa saja yang memengaruhi keputusan karyawan untuk meninggalkan perusahaan?
-3. Apakah ada perbedaan tingkat *attrition* berdasarkan role atau departemen tertentu di perusahaan?
-4. Bagaimana pengaruh lembur (*overtime*) terhadap keputusan karyawan untuk keluar dari perusahaan?
-5. Bagaimana memprediksi tingkat attrition di masa depan?
+**Output Akhir:**
+- **Model prediksi:** Model machine learning yang dapat memprediksi kemungkinan seorang karyawan keluar dari perusahaan.
+- **Dashboard visualisasi data:** Dashboard interaktif menggunakan Metabase yang memungkinkan manajer HR untuk melihat dan menganalisis tingkat *attrition* berdasarkan faktor-faktor penting.
 
 ---
 
@@ -44,11 +45,25 @@ Jaya Jaya Maju merupakan perusahaan multinasional dengan lebih dari 1000 karyawa
 
 ### **Setup Environment**
 
-- **Library Python:**
+- **Langkah-langkah setup:**
+  1. Buat lingkungan virtual menggunakan perintah berikut:
+     ```bash
+     python -m venv env
+     source env/bin/activate  # Untuk pengguna MacOS dan Linux
+     .\env\Scripts\activate  # Untuk pengguna Windows
+     ```
+
+  2. Instal semua dependensi yang dibutuhkan:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+- **Library Python yang Digunakan:**
   - `pandas` untuk pengolahan data.
   - `matplotlib` dan `seaborn` untuk visualisasi.
   - `scikit-learn` untuk pelatihan model prediksi.
   - `joblib` untuk menyimpan dan memuat model.
+  - `sqlalchemy` untuk koneksi ke database.
 
 - **Konfigurasi Supabase:**
   - Hubungkan Metabase dengan Supabase melalui konfigurasi koneksi database.
@@ -107,7 +122,29 @@ Konfigurasikan koneksi database di Metabase menggunakan detail dari Supabase.
    - Attrition by Age Group
    - Job Satisfaction vs Attrition
 
+### **4️⃣ Menjalankan Script Prediksi**
+
+1. Pastikan semua dependensi telah diinstal:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Jalankan script prediksi pada data baru:
+   ```bash
+   python Prediction.py --input data_baru.csv
+   ```
+
+3. Data `data_baru.csv` harus berisi kolom berikut:
+   ```csv
+   Age,JobRole,Department,OverTime,YearsAtCompany,JobSatisfaction
+   32,Sales Executive,Sales,Yes,5,3
+   45,Research Scientist,Research & Development,No,12,4
+   ```
+
+4. Hasil prediksi akan muncul di terminal.
+
 ---
+
 ## **6. Business Dashboard**
 
 Dashboard ini dirancang untuk memberikan wawasan komprehensif kepada tim HR mengenai faktor-faktor yang berkontribusi terhadap keputusan karyawan untuk meninggalkan perusahaan. Dengan dashboard ini, tim HR dapat:
