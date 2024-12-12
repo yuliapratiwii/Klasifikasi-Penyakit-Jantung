@@ -1,5 +1,3 @@
-
-
 # 📘 Dokumentasi Proyek HR Analysis
 
 ## **1. Deskripsi Proyek**
@@ -34,6 +32,7 @@ Jaya Jaya Maju merupakan perusahaan multinasional dengan lebih dari 1000 karyawa
 2. Faktor-faktor apa saja yang memengaruhi keputusan karyawan untuk meninggalkan perusahaan?
 3. Apakah ada perbedaan tingkat *attrition* berdasarkan role atau departemen tertentu di perusahaan?
 4. Bagaimana pengaruh lembur (*overtime*) terhadap keputusan karyawan untuk keluar dari perusahaan?
+5. Bagaimana memprediksi tingkat attrition di masa depan?
 
 ---
 
@@ -46,16 +45,16 @@ Jaya Jaya Maju merupakan perusahaan multinasional dengan lebih dari 1000 karyawa
 ### **Setup Environment**
 
 - **Library Python:**
-
   - `pandas` untuk pengolahan data.
   - `matplotlib` dan `seaborn` untuk visualisasi.
   - `scikit-learn` untuk pelatihan model prediksi.
+  - `joblib` untuk menyimpan dan memuat model.
 
 - **Konfigurasi Supabase:**
-  Hubungkan Metabase dengan Supabase melalui konfigurasi koneksi database.
+  - Hubungkan Metabase dengan Supabase melalui konfigurasi koneksi database.
+  - Impor file CSV ke Supabase dan pastikan data telah berhasil dimuat ke dalam database.
 
 - **Akses Metabase:**
-
   1. Buka **[https://metabase.yourdomain.com](https://metabase.yourdomain.com)**.
   2. Buat akun admin dan tambahkan koneksi database Supabase.
   3. Impor file CSV ke Supabase dan integrasikan dengan Metabase.
@@ -65,23 +64,21 @@ Jaya Jaya Maju merupakan perusahaan multinasional dengan lebih dari 1000 karyawa
 ## **4. Rekomendasi Action Items**
 
 1. **Mengelola dan Mengurangi Lembur:**
-
    - **Evaluasi Beban Kerja:** Sesuaikan beban kerja agar karyawan tidak perlu sering lembur.
    - **Insentif Kinerja:** Berikan insentif berdasarkan kinerja, bukan waktu kerja.
+   - **Batas Jam Lembur:** Tetapkan batas maksimal lembur per minggu (misal, 10 jam/minggu) untuk meningkatkan keseimbangan kerja dan kehidupan pribadi.
 
 2. **Meningkatkan Kepuasan Kerja:**
-
    - **Program Peningkatan Kepuasan:** Adakan survei bulanan dan sesi *one-on-one* untuk mendengar masukan karyawan.
    - **Pengembangan Karir:** Sediakan pelatihan pengembangan keterampilan untuk meningkatkan motivasi.
+   - **Peningkatan Lingkungan Kerja:** Sediakan fasilitas tambahan yang mendukung kenyamanan karyawan (misal, ruang relaksasi atau area rekreasi).
 
 3. **Strategi Retensi di Departemen Kritis:**
-
    - **Fokus pada Departemen Bermasalah:** Buat program retensi yang mencakup insentif, pengakuan, dan jalur karir yang jelas untuk departemen dengan tingkat *attrition* tinggi.
 
 4. **Penilaian Berkelanjutan:**
-
    - **Pemantauan Berkelanjutan:** Pantau metrik penting seperti lembur dan tingkat kepuasan melalui dashboard dan lakukan intervensi segera.
-
+   
 ---
 
 ## **5. Cara Menjalankan Proyek**
@@ -111,7 +108,6 @@ Konfigurasikan koneksi database di Metabase menggunakan detail dari Supabase.
    - Job Satisfaction vs Attrition
 
 ---
-
 ## **6. Business Dashboard**
 
 Dashboard ini dirancang untuk memberikan wawasan komprehensif kepada tim HR mengenai faktor-faktor yang berkontribusi terhadap keputusan karyawan untuk meninggalkan perusahaan. Dengan dashboard ini, tim HR dapat:
