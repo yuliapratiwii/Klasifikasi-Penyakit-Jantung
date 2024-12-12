@@ -1,10 +1,13 @@
 
+
 # 📘 Dokumentasi Proyek HR Analysis
 
 ## **1. Deskripsi Proyek**
-Proyek ini bertujuan untuk menganalisis tingkat attrition (keluar masuk karyawan) di perusahaan menggunakan **Metabase** sebagai alat visualisasi. Data karyawan disimpan dalam database **H2** secara default, tetapi dapat dipindahkan ke database eksternal seperti PostgreSQL atau MySQL untuk keperluan produksi. 
+
+Proyek ini bertujuan untuk menganalisis tingkat *attrition* (keluar masuk karyawan) di perusahaan menggunakan **Metabase** sebagai alat visualisasi. Data karyawan disimpan dalam database **Supabase**, yang memberikan fleksibilitas dalam pengelolaan data berbasis cloud.
 
 Visualisasi data meliputi analisis tingkat keluar karyawan berdasarkan:
+
 - **Gender (Jenis Kelamin)**
 - **Marital Status (Status Pernikahan)**
 - **Job Role (Posisi Pekerjaan)**
@@ -13,76 +16,91 @@ Visualisasi data meliputi analisis tingkat keluar karyawan berdasarkan:
 - **Job Satisfaction (Kepuasan Kerja)**
 - **Age (Usia)**
 
-## **2. Tujuan Proyek**
-1. **Menganalisis faktor-faktor yang memengaruhi tingkat attrition** di perusahaan.
-2. **Menyediakan visualisasi berbasis dashboard** untuk mempermudah pemahaman pola data.
-3. **Menyimpan database H2** di folder lokal dengan format `.db.mv.db` agar mudah untuk dibackup dan digunakan kembali.
+---
 
-## **3. Lingkup Proyek**
-1. **Data Sumber**: 
-   - File CSV yang berisi informasi karyawan seperti usia, gender, status pernikahan, dan status pekerjaan.
-   
-2. **Alat dan Teknologi**:
-   - **Docker**: Menjalankan Metabase dalam container.
-   - **Metabase**: Alat visualisasi data dan pembuatan dashboard.
-   - **H2 Database**: Digunakan sebagai database default Metabase.
+## **2. Permasalahan Bisnis**
 
-3. **Dashboard Visualisasi**:
-   - **Total Employee & Overall Attrition Rate**: Menampilkan jumlah total karyawan dan tingkat attrition.
-   - **Impact of Overtime on Attrition**: Menganalisis pengaruh lembur terhadap attrition.
-   - **Attrition Rate by Gender**: Menampilkan tingkat attrition berdasarkan gender.
-   - **Attrition by Marital Status**: Menampilkan tingkat attrition berdasarkan status pernikahan.
-   - **Attrition by Job Role**: Menampilkan tingkat attrition berdasarkan peran pekerjaan.
-   - **Attrition by Department**: Menampilkan tingkat attrition berdasarkan departemen.
-   - **Attrition by Age Group**: Menampilkan tingkat attrition berdasarkan usia.
-   - **Job Satisfaction vs Attrition**: Menganalisis pengaruh kepuasan kerja terhadap tingkat attrition.
+Jaya Jaya Maju merupakan perusahaan multinasional dengan lebih dari 1000 karyawan. Meskipun perusahaan berkembang pesat, mereka menghadapi tantangan dalam mempertahankan karyawan akibat tingginya *attrition rate* yang mencapai lebih dari 10%. Ini menyebabkan beberapa dampak negatif seperti:
 
-## Business Understanding
-Jaya Jaya Maju merupakan perusahaan multinasional yang berdiri sejak tahun 2000, dengan lebih dari 1000 karyawan yang tersebar di seluruh negeri. Meskipun perusahaan ini telah berkembang menjadi cukup besar, mereka masih menghadapi tantangan signifikan dalam mengelola karyawannya. Salah satu dampak utama dari tantangan ini adalah tingginya *attrition rate*, yaitu rasio jumlah karyawan yang keluar dengan total karyawan keseluruhan, yang mencapai lebih dari 10%. Tingginya *attrition rate* ini mengindikasikan adanya masalah dalam mempertahankan karyawan, yang dapat berdampak negatif pada produktivitas, biaya rekrutmen, dan stabilitas operasional perusahaan.
+- **Peningkatan Biaya Rekrutmen:** Biaya tambahan untuk merekrut, melatih, dan mengintegrasikan karyawan baru.
+- **Penurunan Produktivitas:** Beban kerja meningkat bagi karyawan yang tersisa, mengurangi produktivitas.
+- **Ketidakstabilan Operasional:** Pergantian karyawan yang tinggi dapat mengganggu kelancaran operasi bisnis.
 
-### Permasalahan Bisnis
+**Urgensi & Risiko:** Jika masalah ini tidak diatasi, perusahaan berisiko kehilangan talenta terbaik, merusak citra perusahaan, dan menghadapi penurunan daya saing di pasar global.
 
-1. Seberapa tinggi tingkat attrition di perusahaan ini?
-2. Faktor-faktor apa saja yang mempengaruhi keputusan karyawan untuk meninggalkan perusahaan?
-3. Apakah ada perbedaan tingkat attrition berdasarkan role atau departemen tertentu di perusahaan?
-4. Bagaimana pengaruh lembur (overtime) terhadap keputusan karyawan untuk keluar dari perusahaan?
+**Pertanyaan Bisnis:**
 
-### Cakupan Proyek
+1. Seberapa tinggi tingkat *attrition* di perusahaan ini?
+2. Faktor-faktor apa saja yang memengaruhi keputusan karyawan untuk meninggalkan perusahaan?
+3. Apakah ada perbedaan tingkat *attrition* berdasarkan role atau departemen tertentu di perusahaan?
+4. Bagaimana pengaruh lembur (*overtime*) terhadap keputusan karyawan untuk keluar dari perusahaan?
 
-* Analisis Data: Menggunakan data karyawan yang ada untuk mengidentifikasi faktor-faktor utama yang mempengaruhi attrition.
-* Visualisasi & Pelaporan: Mengembangkan dashboard bisnis yang dapat digunakan oleh manajer HR untuk memonitor dan menganalisis faktor-faktor tersebut secara visual.
-* Rekomendasi & Intervensi: Berdasarkan hasil analisis, memberikan rekomendasi untuk intervensi yang dapat dilakukan untuk mengurangi attrition rate dan meningkatkan kepuasan karyawan.
+---
 
-## **4. Struktur Proyek**
-```
-project-root/
-├── data/
-│   └── employee_dataset.csv  # Dataset utama
-├── metabase/
-│   └── metabase.db.mv.db     # File database Metabase (dari H2)
-├── docker-compose.yml        # Konfigurasi Docker untuk Metabase
-├── documentation.md          # Dokumentasi proyek ini
-└── README.md                 # Panduan utama proyek
-```
+## **3. Tahapan Persiapan**
+
+### **Sumber Data**
+
+- File CSV berisi data karyawan seperti usia, gender, status pernikahan, status pekerjaan, dan tingkat kepuasan kerja yang diunggah ke Supabase.
+
+### **Setup Environment**
+
+- **Library Python:**
+
+  - `pandas` untuk pengolahan data.
+  - `matplotlib` dan `seaborn` untuk visualisasi.
+  - `scikit-learn` untuk pelatihan model prediksi.
+
+- **Konfigurasi Supabase:**
+  Hubungkan Metabase dengan Supabase melalui konfigurasi koneksi database.
+
+- **Akses Metabase:**
+
+  1. Buka **[https://metabase.yourdomain.com](https://metabase.yourdomain.com)**.
+  2. Buat akun admin dan tambahkan koneksi database Supabase.
+  3. Impor file CSV ke Supabase dan integrasikan dengan Metabase.
+
+---
+
+## **4. Rekomendasi Action Items**
+
+1. **Mengelola dan Mengurangi Lembur:**
+
+   - **Evaluasi Beban Kerja:** Sesuaikan beban kerja agar karyawan tidak perlu sering lembur.
+   - **Insentif Kinerja:** Berikan insentif berdasarkan kinerja, bukan waktu kerja.
+
+2. **Meningkatkan Kepuasan Kerja:**
+
+   - **Program Peningkatan Kepuasan:** Adakan survei bulanan dan sesi *one-on-one* untuk mendengar masukan karyawan.
+   - **Pengembangan Karir:** Sediakan pelatihan pengembangan keterampilan untuk meningkatkan motivasi.
+
+3. **Strategi Retensi di Departemen Kritis:**
+
+   - **Fokus pada Departemen Bermasalah:** Buat program retensi yang mencakup insentif, pengakuan, dan jalur karir yang jelas untuk departemen dengan tingkat *attrition* tinggi.
+
+4. **Penilaian Berkelanjutan:**
+
+   - **Pemantauan Berkelanjutan:** Pantau metrik penting seperti lembur dan tingkat kepuasan melalui dashboard dan lakukan intervensi segera.
+
+---
 
 ## **5. Cara Menjalankan Proyek**
 
-### **1️⃣ Jalankan Metabase dengan Docker**
-Jalankan perintah berikut di terminal PowerShell atau Command Prompt:
+### **1️⃣ Hubungkan Metabase dengan Supabase**
 
-```
-docker run -d -p 3000:3000 --name hranalysis -v C:\Users\62859\Temporary:/metabase.db metabase/metabase
-```
+Konfigurasikan koneksi database di Metabase menggunakan detail dari Supabase.
 
 ### **2️⃣ Akses Metabase**
-1. Buka browser dan kunjungi **http://localhost:3000**.
+
+1. Buka browser dan kunjungi **[https://metabase.yourdomain.com](https://metabase.yourdomain.com)**.
 2. Lakukan konfigurasi awal:
    - Buat akun admin.
-   - Pilih **H2 Database** sebagai default database.
-   
+   - Tambahkan koneksi database Supabase.
+
 ### **3️⃣ Impor Dataset**
-1. Impor file CSV melalui Metabase.
-2. Buat **Dashboard** dengan menggunakan question berikut:
+
+1. Impor file CSV ke Supabase.
+2. Buat **Dashboard** dengan visualisasi berikut:
    - Total Employee & Attrition Rate
    - Impact of Overtime on Attrition
    - Attrition Rate by Gender
@@ -92,25 +110,9 @@ docker run -d -p 3000:3000 --name hranalysis -v C:\Users\62859\Temporary:/metaba
    - Attrition by Age Group
    - Job Satisfaction vs Attrition
 
-## **6. Action Items (Tugas yang Harus Dilakukan)**
-| **No** | **Action Item**                   | **Deskripsi**                                        | **Deadline** | **Status**   |
-|--------|------------------------------------|------------------------------------------------------|---------------|--------------|
-| 1      | Pembuatan Model Machine Learning   | Melatih model prediksi attrition di Google Colab    | ✅ Selesai    | ✅ Selesai   |
-| 2      | Buat dan jalankan container Metabase | Menjalankan Metabase di Docker dengan volume lokal  | ✅ Selesai    | ✅ Selesai   |
-| 3      | Impor dataset karyawan              | Memasukkan file CSV ke dalam Metabase                | ✅ Selesai    | ✅ Selesai   |
-| 4      | Buat dashboard Metabase            | Buat dashboard berisi 8 visualisasi yang dibutuhkan | ✅ Selesai    | ✅ Selesai   |
-| 5      | Salin file `.db.mv.db` ke lokal    | Pastikan file database `.db.mv.db` tersimpan di lokal| ✅ Selesai    | ✅ Selesai   |
-| 6      | Backup file database Metabase      | Backup file database secara manual                   | ✅ Selesai    | ✅ Selesai   |
-| 7      | Dokumentasi proyek                 | Menyusun dokumentasi proyek seperti ini              | ✅ Selesai    | ✅ Selesai   |
+---
 
-## **7. Risiko dan Mitigasi**
-| **Risiko**                     | **Dampak**              | **Mitigasi**                                      |
-|---------------------------------|------------------------|--------------------------------------------------|
-| File `.db.mv.db` hilang         | Hilangnya database      | Backup file `.db.mv.db` ke direktori aman        |
-| Docker container gagal berjalan | Metabase tidak bisa diakses | Gunakan perintah `docker logs hranalysis` untuk debug |
-| Volume tidak terpasang dengan benar | Database hilang saat restart | Pastikan volume lokal dipetakan ke `/metabase.db`|
-
-## **8. Business Dashboard**
+## **6. Business Dashboard**
 
 Dashboard ini dirancang untuk memberikan wawasan komprehensif kepada tim HR mengenai faktor-faktor yang berkontribusi terhadap keputusan karyawan untuk meninggalkan perusahaan. Dengan dashboard ini, tim HR dapat:
 
