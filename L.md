@@ -74,6 +74,8 @@ Dashboard ini dirancang untuk membantu Jaya Jaya Institut dalam memantau dan men
 4. **Beasiswa terhadap Status Pendidikan**: Mengidentifikasi pengaruh beasiswa terhadap tingkat kelulusan siswa.
 5. **Pengaruh Nilai Masuk terhadap Status**: Mengetahui bagaimana nilai ujian masuk memengaruhi status siswa.
 
+![Yulia Pratiwi_Dashboard](https://github.com/user-attachments/assets/bb9b95dd-97ad-4572-913c-0a847c6b072e)
+
 Dengan dashboard ini, tim Jaya Jaya Institut dapat memonitor tingkat dropout secara real-time dan melakukan intervensi jika diperlukan.
 
 ## Conclusion
