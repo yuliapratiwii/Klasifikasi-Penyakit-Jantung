@@ -74,9 +74,21 @@ Dashboard ini dirancang untuk membantu Jaya Jaya Institut dalam memantau dan men
 4. **Beasiswa terhadap Status Pendidikan**: Mengidentifikasi pengaruh beasiswa terhadap tingkat kelulusan siswa.
 5. **Pengaruh Nilai Masuk terhadap Status**: Mengetahui bagaimana nilai ujian masuk memengaruhi status siswa.
 
-![Yulia Pratiwi_Dashboard](https://github.com/user-attachments/assets/bb9b95dd-97ad-4572-913c-0a847c6b072e)
-
 Dengan dashboard ini, tim Jaya Jaya Institut dapat memonitor tingkat dropout secara real-time dan melakukan intervensi jika diperlukan.
+
+**Link Dashboard**: ![Yulia Pratiwi_Dashboard](https://github.com/user-attachments/assets/bb9b95dd-97ad-4572-913c-0a847c6b072e)
+
+## Menjalankan Sistem Machine Learning
+Sistem machine learning yang dikembangkan berfungsi untuk memprediksi risiko dropout siswa berdasarkan faktor-faktor yang tersedia dalam dataset.
+
+### Cara Menjalankan Prototype Machine Learning
+Untuk menjalankan prototype sistem machine learning secara lokal:
+```bash
+streamlit run app.py
+```
+
+Jika prototype sudah di-deploy di Streamlit Community, Anda dapat mengaksesnya melalui link berikut:
+- [Link Prototype Streamlit](https://proyek-akhir-at3ow6z7f4xxp8v4zxsjlr.streamlit.app/)
 
 ## Conclusion
 Proyek ini berhasil memberikan solusi terhadap permasalahan utama yang dihadapi oleh Jaya Jaya Institut, yaitu tingginya tingkat dropout siswa. 
