@@ -1,7 +1,14 @@
 # Implementasi Chatbot Mahasiswa Baru UNIB
 
-Proyek ini bertujuan untuk membangun chatbot berbasis deep learning untuk membantu mahasiswa baru Universitas Bengkulu (UNIB) mendapatkan informasi terkait registrasi mahasiswa baru dan juga informasi seputar unib.
+## Deskripsi Proyek
+Proyek ini bertujuan untuk membangun chatbot berbasis deep learning yang akan membantu mahasiswa baru Universitas Bengkulu (UNIB) mendapatkan informasi terkait kampus dengan lebih efisien dan cepat. Chatbot ini dapat menjawab berbagai pertanyaan terkait registrasi, jadwal kuliah, lokasi gedung, prosedur administrasi, dan informasi umum lainnya di kampus UNIB.
 
+Proyek ini dibuat untuk memenuhi tugas **Ujian Akhir Semester (UAS)** dalam mata kuliah **Deep Learning**.
+
+## Anggota Kelompok
+- **Yulia Pratiwi** – G1A021029
+- **Zabrila Amrina Zadia Putri** – G1A021053
+---
 ### 1. **Business Understanding**
 - **Tujuan:**
   - Membuat chatbot yang dapat menjawab berbagai pertanyaan mahasiswa baru terkait kampus, seperti jadwal, lokasi gedung, prosedur administrasi, dan lain-lain.
@@ -48,16 +55,15 @@ Proyek ini bertujuan untuk membangun chatbot berbasis deep learning untuk memban
 - Loss Function: Sparse Categorical Crossentropy.
 - Dropout: 0.5 (untuk mencegah overfitting).
 
-#### **Hasil Model:**
+#### **Hasil :**
 - **Akurasi Pelatihan:** 97.3% setelah 200 epoch.
 - **Grafik Pelatihan:**
   - **Loss:** Menurun konsisten selama pelatihan.
   - **Akurasi:** Meningkat stabil hingga mendekati 1.
-
+![grafik](https://github.com/user-attachments/assets/cec2aa36-860a-425c-b320-e89090a66dcd)
 ---
 
 ### 5. **Evaluation**
-
 
 #### **Kelebihan Model:**
 - Mampu mengklasifikasikan intent pengguna dengan akurasi tinggi.
@@ -67,14 +73,9 @@ Proyek ini bertujuan untuk membangun chatbot berbasis deep learning untuk memban
 - Masih membutuhkan pengujian pada data real-world untuk memastikan kemampuan generalisasi.
 - Belum dilakukan evaluasi mendalam menggunakan metrik seperti precision, recall, dan F1-score.
 
-#### **Saran Evaluasi Lanjutan:**
-- Uji model dengan pertanyaan dari mahasiswa baru secara langsung.
-- Lakukan analisis tambahan dengan metrik evaluasi yang lebih detail.
-
 ---
+### 5. **Pengujian**
+
+## Hasil Pengujian Model
 
 
-## Kesimpulan
-Proyek chatbot ini telah dirancang dan dikembangkan dengan mengikuti metodologi CRISP-DM, memastikan setiap tahapannya dilakukan secara sistematis. Model deep learning yang dibangun menunjukkan hasil akurasi tinggi dan memiliki potensi besar untuk diimplementasikan langsung di UNIB.
-
-Jika ada masukan atau saran tambahan, silakan diskusikan! 😊
