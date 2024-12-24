@@ -77,5 +77,7 @@ Proyek ini dibuat untuk memenuhi tugas **Ujian Akhir Semester (UAS)** dalam mata
 ### 5. **Pengujian**
 
 ## Hasil Pengujian Model
-
+![Screenshot 2024-12-24 221949](https://github.com/user-attachments/assets/846072f1-3ee7-4005-927a-07c8b98ae07d)
+![Screenshot 2024-12-24 222008](https://github.com/user-attachments/assets/7a84d672-e069-4f85-b0cb-35d6a3cf66bc)
+![Screenshot 2024-12-24 222023](https://github.com/user-attachments/assets/15e4b3cd-d3b5-44e3-8e01-f21bd4ac27d4)
 
