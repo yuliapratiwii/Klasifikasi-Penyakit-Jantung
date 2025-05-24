@@ -1,43 +1,110 @@
-# Batik Besurek Bengkulu Image Classification Project
+# Sleep Health Dashboard
 
-Proyek ini bertujuan untuk mengklasifikasikan jenis motif batik Besurek Bengkulu berdasarkan dataset yang terdiri dari beberapa kategori motif.
+This repository contains a Streamlit dashboard application designed to provide insightful visualizations and data analysis from [sleep health dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset/). Follow the instructions below to set up and run the application.
 
-## Dataset
+## Table of Contents
 
-Dataset yang digunakan terdiri dari kategori berikut:
+- [Prerequisites](#prerequisites)
+- [Setting Up the Environment](#setting-up-the-environment)
+  - [Clone the Repository](#clone-the-repository)
+  - [Create a Virtual Environment](#create-a-virtual-environment)
+  - [Activate the Virtual Environment](#activate-the-virtual-environment)
+  - [Install Required Packages](#install-required-packages)
+- [Running the Streamlit Application](#running-the-streamlit-application)
+  - [Run the Streamlit Application](#run-the-streamlit-application)
+  - [Stopping the Application](#stopping-the-application)
+- [Additional Notes](#additional-notes)
 
-0: Kaligrafi Arab
-1: Kaligrafi Arab-Kembang Cengkeh-Kembang Cempaka
-2: Kaligrafi-Burung Kuau
-3: Kaligrafi-Kembang Melati
-4: Kaligrafi-Relung Paku-Burung Punai
-5: Pohon Hayat-Burung Kuau-Kaligrafi Arab
-6: Rafflesia
-7: Rembulan Kaligrafi Arab
-Dataset ini merupakan bagian dari studi tentang klasifikasi motif batik Besurek Bengkulu.
+## Prerequisites
 
+Make sure you have the following installed on your system:
 
-## Steps to Use the Inference Code
+- Python 3.10 or higher
+- pip (Python package installer)
 
-1. **Install Docker**
+## Setting Up the Environment
 
-    Open your terminal, Command Prompt, or PowerShell and run the following command to pull the TensorFlow Serving Docker image:
-    ```sh
-    docker pull tensorflow/serving
-    ```
+### Clone the Repository
 
-2. **Run the Docker Container**
+Start by cloning this repository to your local machine. Open your terminal and run:
 
-    Execute the following command to start the Docker container:
-    ```sh
-    docker run -it -v YOUR_PATH\saved_model:/models -p 8501:8501 --entrypoint /bin/bash tensorflow/serving
-    ```
+```bash
+git clone https://github.com/ivandrian11/sleep-health-dashboard.git
+cd sleep-health-dashboard
+```
 
-3. **Start the TensorFlow Model Server**
+### Create a Virtual Environment
 
-    Inside the Docker container, run:
-    ```sh
-    tensorflow_model_server --rest_api_port=8501 --model_name=animal_faces_model --model_base_path=/models/animal_faces_model/
-    ```
+It's recommended to use a virtual environment to manage dependencies for your project. You can create a virtual environment using the following command:
 
-Replace `YOUR_PATH` with the actual path to your saved model.
+```bash
+python -m venv venv
+```
+
+This command creates a directory named `venv` in your project folder, which will contain the virtual environment.
+
+### Activate the Virtual Environment
+
+Activate the virtual environment using the appropriate command for your operating system:
+
+- On Windows:
+
+  ```bash
+  venv\Scripts\activate
+  ```
+
+- On macOS and Linux:
+
+  ```bash
+  source venv/bin/activate
+  ```
+
+After activation, your terminal prompt will change to indicate that the virtual environment is active.
+
+### Install Required Packages
+
+Once the virtual environment is activated, install the required packages listed in `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install all the necessary dependencies for the Streamlit application.
+
+## Running the Streamlit Application
+
+### Navigate to the Dashboard Directory
+
+Ensure you are in the directory where `main.py` is located. If you are not already there, use the following command:
+
+```bash
+cd dashboard
+```
+
+### Run the Streamlit Application
+
+Start the Streamlit application by executing the following command:
+
+```bash
+streamlit run main.py
+```
+
+This command will start the Streamlit server and provide you with a local URL (usually `http://localhost:8501`) to view the dashboard in your web browser.
+
+### Stopping the Application
+
+To stop the Streamlit application, you can use `Ctrl + C` in the terminal where the server is running.
+
+## Additional Notes
+
+- Make sure to deactivate the virtual environment when you're done working by running:
+
+  ```bash
+  deactivate
+  ```
+
+- If you make changes to the code or install new packages, you might need to restart the Streamlit server to see the changes reflected.
+
+- For more information on Streamlit features and functions, refer to the [Streamlit Cheat Sheet](https://docs.streamlit.io/develop/quick-reference/cheat-sheet).
+
+- To learn how to deploy your Streamlit application, check the instructions at [Deploying Streamlit Apps](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app).
